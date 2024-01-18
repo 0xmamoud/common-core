@@ -6,7 +6,7 @@
 /*   By: mkane <mkane@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/22 02:23:14 by mkane             #+#    #+#             */
-/*   Updated: 2024/01/18 00:03:35 by mkane            ###   ########.fr       */
+/*   Updated: 2024/01/18 21:40:03 by mkane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,8 @@ void		ft_lst_reverse_rotate(t_stack **stack);
 void		ft_lst_reverse_rotate_a(t_stack **stack);
 void		ft_lst_reverse_rotate_b(t_stack **stack);
 void		ft_lst_reverse_rotate_both(t_stack **stack_a, t_stack **stack_b);
+void		ft_three_case(t_stack **stack_a);
+void		ft_push_swap(t_stack **stack_a, t_stack **stack_b);
 int			ft_check_digit(char *str);
 int			parsing(char *argv);
 int			ft_check_atoi(char **str);

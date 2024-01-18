@@ -6,7 +6,7 @@
 /*   By: mkane <mkane@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/22 21:56:37 by mkane             #+#    #+#             */
-/*   Updated: 2024/01/18 00:04:14 by mkane            ###   ########.fr       */
+/*   Updated: 2024/01/18 21:45:55 by mkane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ t_stack	*ft_fill_stack_a(char *argv)
 	while (tab[i])
 	{
 		nb = ft_atoi(tab[i]);
-		tmp = ft_create_stack(nb, i);
+		tmp = ft_create_stack(nb, i + 1);
 		ft_stack_add_back(&stack_a, tmp);
 		free(tab[i]);
 		i++;

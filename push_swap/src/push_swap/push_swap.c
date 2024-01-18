@@ -1,25 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_stack_last.c                                    :+:      :+:    :+:   */
+/*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mkane <mkane@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/22 18:36:47 by mkane             #+#    #+#             */
-/*   Updated: 2024/01/18 21:40:27 by mkane            ###   ########.fr       */
+/*   Created: 2024/01/18 19:48:56 by mkane             #+#    #+#             */
+/*   Updated: 2024/01/18 21:46:04 by mkane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/push_swap.h"
+#include "../../includes/push_swap.h"
 
-t_stack	*ft_stack_last(t_stack *stack)
+void	ft_push_swap(t_stack **stack_a, t_stack **stack_b)
 {
 	t_stack	*tmp;
+	(void)stack_b;
 
-	if (!stack)
-		return (NULL);
-	tmp = stack;
-	while (tmp->next)
-		tmp = tmp->next;
-	return (tmp);
+	tmp = *stack_a;
+	if (ft_stack_last(tmp)->pos == 3)
+		ft_three_case(stack_a);
 }
