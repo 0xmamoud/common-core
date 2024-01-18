@@ -6,7 +6,7 @@
 /*   By: mkane <mkane@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/24 18:09:38 by mkane             #+#    #+#             */
-/*   Updated: 2024/01/17 23:51:13 by mkane            ###   ########.fr       */
+/*   Updated: 2024/01/18 19:29:50 by mkane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ void	ft_lst_swap_b(t_stack **stack)
 
 void	ft_lst_swap_both(t_stack **stack_a, t_stack **stack_b)
 {
-	ft_lst_swap_a(stack_a);
-	ft_lst_swap_b(stack_b);
+	ft_lst_swap(stack_a);
+	ft_lst_swap(stack_b);
+	ft_printf("ss\n");
 }

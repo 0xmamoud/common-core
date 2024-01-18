@@ -6,7 +6,7 @@
 /*   By: mkane <mkane@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/22 02:27:47 by mkane             #+#    #+#             */
-/*   Updated: 2023/12/24 21:51:36 by mkane            ###   ########.fr       */
+/*   Updated: 2024/01/18 19:30:52 by mkane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,27 +29,6 @@ int	main(int argc, char **argv)
 		return (0);
 	}
 	env.stack_a = ft_fill_stack_a(tab);
-	ft_lst_push(&env.stack_a, &env.stack_b);
-	ft_lst_push(&env.stack_a, &env.stack_b);
-	ft_lst_push(&env.stack_a, &env.stack_b);
-	// ft_lst_swap_both(&env.stack_a, &env.stack_b);
-	ft_lst_reverse_rotate_both(&env.stack_a, &env.stack_b);
-	t_stack *current = env.stack_a;
-	t_stack *current2 = env.stack_b;
-	while (current)
-	{
-		ft_printf("nbr = %d || pos = %d\n", current->nb, current->pos);
-		current = current->next;
-	}
-	ft_printf("\n===============================\n");
-	while (current2)
-	{
-		ft_printf("nbr = %d || pos = %d\n", current2->nb, current2->pos);
-		current2 = current2->next;
-	}
-	ft_free_stack(current);
-	ft_free_stack(current2);
 	ft_free_stack(env.stack_a);
-	ft_free_stack(env.stack_b);
 	return (0);
 }
