@@ -6,7 +6,7 @@
 /*   By: mkane <mkane@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/22 02:27:47 by mkane             #+#    #+#             */
-/*   Updated: 2024/01/19 00:25:49 by mkane            ###   ########.fr       */
+/*   Updated: 2024/01/21 23:38:29 by mkane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int	main(int argc, char **argv)
 		return (0);
 	}
 	env.stack_a = ft_fill_stack_a(tab);
-	char *test = "432";
+	char *test = "6 5 2 1 7";
 	env.stack_b = ft_fill_stack_a(test);
 	// ft_push_swap(&env.stack_a, &env.stack_b);
 	ft_printf("%d\n", ft_lower_cost(&env.stack_a, &env.stack_b));
