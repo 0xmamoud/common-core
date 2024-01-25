@@ -3,48 +3,51 @@
 /*                                                        :::      ::::::::   */
 /*   sort_over_three.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mkane <mkane@student.42.fr>                +#+  +:+       +#+        */
+/*   By: kane <kane@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 23:21:50 by mkane             #+#    #+#             */
-/*   Updated: 2024/01/25 05:15:36 by mkane            ###   ########.fr       */
+/*   Updated: 2024/01/25 21:17:27 by kane             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/push_swap.h"
 
-t_stack	*ft_find_max_min(t_stack **stack, int nbr)
+int	ft_find_max_min(t_stack **stack, int nbr)
 {
 	t_stack	*tmp;
-	t_stack	*min;
+	int		min;
+	int		cost;
 
 	tmp = *stack;
-	min = tmp;
+	cost = tmp->pos;
+	min = tmp->nb;
 	if (ft_stack_last(tmp)->pos == 1)
-		return (min);
+		return (cost);
 	while (tmp)
 	{
-		if (tmp->nb > min->nb && tmp->nb < nbr)
-			min = tmp;
+		if (tmp->nb > min && tmp->nb < nbr)
+		{
+			min = tmp->nb;
+			cost = tmp->pos;
+		}
 		tmp = tmp->next;
 	}
-	return (min);
+	return (cost);
 }
 
 int	ft_lowest_nbr(t_stack **stack_a, t_stack **stack_b, int *pos)
 {
 	t_stack	*tmpa;
-	t_stack	*tmpb;
 	int		tmp_cost;
 	int		cost;
 	int		nbr;
 
 	tmpa = *stack_a;
-	tmpb = *stack_b;
 	cost = 2147483647;
 	nbr = tmpa->nb;
 	while (tmpa)
 	{
-		tmp_cost = tmpa->pos + ft_find_max_min(stack_b, tmpa->nb)->pos;
+		tmp_cost = tmpa->pos + ft_find_max_min(stack_b, tmpa->nb);
 		if (tmp_cost < cost)
 		{
 			cost = tmp_cost;
@@ -63,6 +66,8 @@ void	ft_sort(t_stack **stack_a, t_stack **stack_b)
 	int		pos;
 
 	tmpa = *stack_a;
+	ft_lst_push_b(stack_a, stack_b);
+	ft_lst_push_b(stack_a, stack_b);
 	while (ft_stack_last(*stack_a)->pos != 1)
 	{
 		pos = ft_lowest_nbr(stack_a, stack_b, &cost);
@@ -82,12 +87,12 @@ void	ft_sort(t_stack **stack_a, t_stack **stack_b)
 			ft_lst_rotate_b(stack_b);
 			cost--;
 		}
-		ft_lst_push_a(stack_a, stack_b);
+		ft_lst_push_b(stack_a, stack_b);
 	}
-	ft_lst_push_a(stack_a, stack_b);
+	ft_lst_push_b(stack_a, stack_b);
 	while (ft_stack_last(*stack_b)->pos != 1)
-		ft_lst_push_b(stack_b, stack_a);
-	ft_lst_push_b(stack_b, stack_a);
+		ft_lst_push_a(stack_b, stack_a);
+	ft_lst_push_a(stack_b, stack_a);
 }
 
 int	ft_min(t_stack **stack)
