@@ -6,33 +6,31 @@
 /*   By: mkane <mkane@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 23:21:50 by mkane             #+#    #+#             */
-/*   Updated: 2024/01/26 00:22:50 by mkane            ###   ########.fr       */
+/*   Updated: 2024/01/26 05:02:36 by mkane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/push_swap.h"
 
-int	ft_find_max_min(t_stack **stack, int nbr)
+void	ft_sort(t_stack **stack_a, t_stack **stack_b)
 {
-	t_stack	*tmp;
-	int		min;
+	t_stack	*tmpa;
 	int		cost;
+	int		pos;
+	int		len;
 
-	tmp = *stack;
-	cost = tmp->pos;
-	min = tmp->nb;
-	if (ft_stack_last(tmp)->pos == 1)
-		return (cost);
-	while (tmp)
+	tmpa = *stack_a;
+	ft_lst_push_b(stack_a, stack_b);
+	ft_lst_push_b(stack_a, stack_b);
+	len = ft_stack_last(*stack_a)->pos;
+	while (len)
 	{
-		if (tmp->nb > min && tmp->nb < nbr)
-		{
-			min = tmp->nb;
-			cost = tmp->pos;
-		}
-		tmp = tmp->next;
+		pos = ft_lowest_nbr(stack_a, stack_b, &cost);
+		ft_rotate_to_min(stack_a, stack_b, pos, cost);
+		len--;
 	}
-	return (cost);
+	// ft_rotate_to_min(stack_a, stack_b, pos, cost);
+	ft_push_back(stack_a, stack_b);
 }
 
 int	ft_lowest_nbr(t_stack **stack_a, t_stack **stack_b, int *pos)
@@ -59,39 +57,86 @@ int	ft_lowest_nbr(t_stack **stack_a, t_stack **stack_b, int *pos)
 	return (nbr);
 }
 
-void	ft_sort(t_stack **stack_a, t_stack **stack_b)
+void	ft_rotate_to_min(t_stack **stack_a, t_stack **stack_b, int pos, int cost)
 {
 	t_stack	*tmpa;
-	int		cost;
-	int		pos;
 
 	tmpa = *stack_a;
-	ft_lst_push_b(stack_a, stack_b);
-	ft_lst_push_b(stack_a, stack_b);
-	while (*stack_a)
+	while (tmpa->nb != pos)
 	{
-		pos = ft_lowest_nbr(stack_a, stack_b, &cost);
-		while (tmpa->nb != pos)
+		if (cost > 0)
 		{
-			if (cost > 0)
-			{
-				ft_lst_rotate_both(stack_a, stack_b);
+			ft_lst_rotate_both(stack_a, stack_b);
 				cost--;
-			}
-			else
-				ft_lst_rotate_a(stack_a);
-			tmpa = *stack_a;
 		}
-		while (cost > 0)
+		else
+			ft_lst_rotate_a(stack_a);
+	}
+	while (cost > 0)
+	{
+		ft_lst_rotate_b(stack_b);
+		cost--;
+	}
+	ft_lst_push_b(stack_a, stack_b);
+}
+
+int	ft_find_max_min(t_stack **stack, int nbr)
+{
+	t_stack	*tmp;
+	int		min;
+	int		cost;
+
+	tmp = *stack;
+	cost = tmp->pos;
+	min = tmp->nb;
+	if (ft_stack_last(tmp)->pos == 1)
+		return (cost);
+	while (tmp)
+	{
+		if (tmp->nb > min && tmp->nb < nbr)
+		{
+			min = tmp->nb;
+			cost = tmp->pos;
+		}
+		tmp = tmp->next;
+	}
+	return (cost);
+}
+
+void	ft_push_back(t_stack **stack_a, t_stack **stack_b)
+{
+	t_stack	*tmp;
+	int		len;
+
+	tmp = *stack_b;
+	len = ft_stack_last(*stack_b)->pos;
+	while (len)
+	{
+		while (tmp->nb != ft_max(stack_b))
 		{
 			ft_lst_rotate_b(stack_b);
-			cost--;
+			tmp = *stack_b;
 		}
-		ft_lst_push_b(stack_a, stack_b);
-	}
-	tmpa = *stack_b;
-	while (tmpa->next)
 		ft_lst_push_a(stack_b, stack_a);
+		tmp = *stack_b;
+		len--;
+	}
+}
+
+int	ft_max(t_stack **stack)
+{
+	t_stack	*tmp;
+	int		max;
+
+	tmp = *stack;
+	max = tmp->nb;
+	while (tmp)
+	{
+		if (tmp->nb > max)
+			max = tmp->nb;
+		tmp = tmp->next;
+	}
+	return (max);
 }
 
 int	ft_min(t_stack **stack)

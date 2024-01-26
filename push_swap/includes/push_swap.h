@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kane <kane@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: mkane <mkane@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/22 02:23:14 by mkane             #+#    #+#             */
-/*   Updated: 2024/01/25 20:25:47 by kane             ###   ########.fr       */
+/*   Updated: 2024/01/26 03:52:08 by mkane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,4 +63,7 @@ int			ft_check_sort(t_stack **stack);
 void		ft_sort(t_stack **stack_a, t_stack **stack_b);
 int			ft_lowest_nbr(t_stack **stack_a, t_stack **stack_b, int *pos);
 int			ft_find_max_min(t_stack **stack, int nbr);
+void		ft_rotate_to_min(t_stack **stack_a, t_stack **stack_b, int pos, int cost);
+void		ft_push_back(t_stack **stack_a, t_stack **stack_b);
+int			ft_max(t_stack **stack);
 #endif
