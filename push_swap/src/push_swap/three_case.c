@@ -6,7 +6,7 @@
 /*   By: mkane <mkane@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 19:59:51 by mkane             #+#    #+#             */
-/*   Updated: 2024/01/18 21:31:19 by mkane            ###   ########.fr       */
+/*   Updated: 2024/01/26 00:57:27 by mkane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,22 +21,20 @@ void	ft_three_case(t_stack **stack_a)
 	first = (*stack_a)->nb;
 	second = (*stack_a)->next->nb;
 	third = (*stack_a)->next->next->nb;
-	if (first > second && second > third && first > third)
+	if (first > second && first > third && second > third)
 	{
 		ft_lst_rotate_a(stack_a);
 		ft_lst_swap_a(stack_a);
 	}
-	else if ((first > second && second < third && first > third)
-		|| (first > second && first < third && second < third))
-		ft_lst_swap_a(stack_a);
+	else if (first > second && first > third && second < third)
+		ft_lst_rotate_a(stack_a);
 	else if (first < second && first > third && second > third)
-	{
-		ft_lst_rotate_a(stack_a);
-		ft_lst_rotate_a(stack_a);
-	}
+		ft_lst_reverse_rotate_a(stack_a);
+	else if (first > second && first < third && second < third)
+		ft_lst_swap_a(stack_a);
 	else if (first < second && first < third && second > third)
 	{
+		ft_lst_reverse_rotate_a(stack_a);
 		ft_lst_swap_a(stack_a);
-		ft_lst_rotate_a(stack_a);
 	}
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sort_over_three.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kane <kane@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: mkane <mkane@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 23:21:50 by mkane             #+#    #+#             */
-/*   Updated: 2024/01/25 21:17:27 by kane             ###   ########.fr       */
+/*   Updated: 2024/01/26 00:22:50 by mkane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ void	ft_sort(t_stack **stack_a, t_stack **stack_b)
 	tmpa = *stack_a;
 	ft_lst_push_b(stack_a, stack_b);
 	ft_lst_push_b(stack_a, stack_b);
-	while (ft_stack_last(*stack_a)->pos != 1)
+	while (*stack_a)
 	{
 		pos = ft_lowest_nbr(stack_a, stack_b, &cost);
 		while (tmpa->nb != pos)
@@ -89,10 +89,9 @@ void	ft_sort(t_stack **stack_a, t_stack **stack_b)
 		}
 		ft_lst_push_b(stack_a, stack_b);
 	}
-	ft_lst_push_b(stack_a, stack_b);
-	while (ft_stack_last(*stack_b)->pos != 1)
+	tmpa = *stack_b;
+	while (tmpa->next)
 		ft_lst_push_a(stack_b, stack_a);
-	ft_lst_push_a(stack_b, stack_a);
 }
 
 int	ft_min(t_stack **stack)
