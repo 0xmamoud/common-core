@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   three_case.c                                       :+:      :+:    :+:   */
+/*   sort_three.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mkane <mkane@student.42.fr>                +#+  +:+       +#+        */
+/*   By: kane <kane@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 19:59:51 by mkane             #+#    #+#             */
-/*   Updated: 2024/01/26 00:57:27 by mkane            ###   ########.fr       */
+/*   Updated: 2024/01/28 01:00:08 by kane             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/push_swap.h"
 
-void	ft_three_case(t_stack **stack_a)
+void	ft_sort_three(t_stack **stack_a)
 {
 	int	first;
 	int	second;

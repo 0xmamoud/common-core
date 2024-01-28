@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mkane <mkane@student.42.fr>                +#+  +:+       +#+        */
+/*   By: kane <kane@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/22 02:23:14 by mkane             #+#    #+#             */
-/*   Updated: 2024/01/26 03:52:08 by mkane            ###   ########.fr       */
+/*   Updated: 2024/01/28 01:24:07 by kane             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,20 +50,11 @@ void		ft_lst_reverse_rotate(t_stack **stack);
 void		ft_lst_reverse_rotate_a(t_stack **stack);
 void		ft_lst_reverse_rotate_b(t_stack **stack);
 void		ft_lst_reverse_rotate_both(t_stack **stack_a, t_stack **stack_b);
-void		ft_three_case(t_stack **stack_a);
+void		ft_sort_three(t_stack **stack_a);
 void		ft_push_swap(t_stack **stack_a, t_stack **stack_b);
 int			ft_check_digit(char *str);
 int			parsing(char *argv);
 int			ft_check_atoi(char **str);
 long long	ft_long_atoi(const char *nptr);
 char		*join_argv(int argc, char **argv);
-int			ft_get_median(t_stack **stack);
-int			ft_min(t_stack **stack);
-int			ft_check_sort(t_stack **stack);
-void		ft_sort(t_stack **stack_a, t_stack **stack_b);
-int			ft_lowest_nbr(t_stack **stack_a, t_stack **stack_b, int *pos);
-int			ft_find_max_min(t_stack **stack, int nbr);
-void		ft_rotate_to_min(t_stack **stack_a, t_stack **stack_b, int pos, int cost);
-void		ft_push_back(t_stack **stack_a, t_stack **stack_b);
-int			ft_max(t_stack **stack);
 #endif
