@@ -6,7 +6,7 @@
 /*   By: kane <kane@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/22 02:23:14 by mkane             #+#    #+#             */
-/*   Updated: 2024/01/28 01:24:07 by kane             ###   ########.fr       */
+/*   Updated: 2024/01/29 23:23:47 by kane             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,4 +57,16 @@ int			parsing(char *argv);
 int			ft_check_atoi(char **str);
 long long	ft_long_atoi(const char *nptr);
 char		*join_argv(int argc, char **argv);
+int			ft_median(t_stack **stack);
+int			ft_min(t_stack **stack);
+int			ft_min_pos(t_stack **stack);
+int			ft_max(t_stack **stack);
+int			ft_max_pos(t_stack **stack);
+void		ft_sort_five(t_stack **stack_a, t_stack **stack_b);
+void		ft_sort(t_stack **stack_a, t_stack **stack_b);
+void		ft_rotation(t_stack **a, t_stack **b, int nbr_a, int nbr_b);
+int			ft_find_pos(t_stack **stack, int nbr);
+void		ft_lowest_cost(t_stack **a, t_stack **b, int *na, int *nb);
+int			ft_lowest_nbr(t_stack **stack, int nbr);
+int			ft_cost(t_stack **a, t_stack **b, int nbr_a, int nbr_b);
 #endif

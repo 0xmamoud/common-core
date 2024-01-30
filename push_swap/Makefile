@@ -6,7 +6,7 @@
 #    By: kane <kane@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/18 18:09:23 by mkane             #+#    #+#              #
-#    Updated: 2024/01/28 01:36:51 by kane             ###   ########.fr        #
+#    Updated: 2024/01/29 20:36:10 by kane             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,7 +25,8 @@ SRC = main.c\
 	$(PUSH_SWAP_DIR)lst_reverse_rotate.c\
 	$(PUSH_SWAP_DIR)push_swap.c\
 	$(PUSH_SWAP_DIR)sort_three.c\
-	$(PUSH_SWAP_DIR)sort_over_three.c\
+	$(PUSH_SWAP_DIR)sort_five.c\
+	$(PUSH_SWAP_DIR)sort.c\
 	$(PARSING_DIR)parsing.c\
 	$(PARSING_DIR)join_argv.c\
 	$(UTILS_DIR)ft_long_atoi.c\
@@ -36,6 +37,9 @@ SRC = main.c\
 	$(UTILS_DIR)ft_free_stack.c\
 	$(UTILS_DIR)ft_stack_add_front.c\
 	$(UTILS_DIR)ft_update_index.c\
+	$(UTILS_DIR)median.c\
+	$(UTILS_DIR)min.c\
+	$(UTILS_DIR)max.c\
 
 OBJ = $(SRC:.c=.o)
 
