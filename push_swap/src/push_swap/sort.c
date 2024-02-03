@@ -6,7 +6,7 @@
 /*   By: kane <kane@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 20:36:22 by kane              #+#    #+#             */
-/*   Updated: 2024/02/03 04:43:02 by kane             ###   ########.fr       */
+/*   Updated: 2024/02/03 05:35:01 by kane             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	ft_sort(t_stack **a, t_stack **b)
 	{
 		if ((*a)->nb < ft_min(b) || (*a)->nb > ft_max(b))
 		{
-			ft_rotate_to_top(b, ft_max_pos(b));
+			ft_rotate_to_top_b(b, ft_max_pos(b));
 			ft_lst_push_b(a, b);
 		}
 		else
@@ -31,24 +31,23 @@ void	ft_sort(t_stack **a, t_stack **b)
 			ft_lowest_cost(a, b, &nbr_a, &nbr_b);
 			int pos_a = ft_find_pos(a, nbr_a);
 			int pos_b = ft_find_pos(b, nbr_b);
-			ft_rotate_to_top(a, pos_a);
-			ft_rotate_to_top(b, pos_b);
+			ft_rotate_to_top_a(a, pos_a);
+			ft_rotate_to_top_b(b, pos_b);
 			ft_lst_push_b(a, b);
 		}
 	}
 	ft_sort_three(a);
-	ft_rotate_to_top(b, ft_max_pos(b));
+	ft_rotate_to_top_b(b, ft_max_pos(b));
 	ft_lst_push_a(b, a);
 	while ((*b))
 	{
 		int test = ft_target_a(a, (*b)->nb);
-		ft_rotate_to_top(a, ft_find_pos(a, test));
+		ft_rotate_to_top_a(a, ft_find_pos(a, test));
 		ft_lst_push_a(b, a);
 	}
-
 }
 
-void	ft_rotate_to_top(t_stack **stack, int pos)
+void	ft_rotate_to_top_b(t_stack **stack, int pos)
 {
 	int	median;
 	int	len;
@@ -71,8 +70,31 @@ void	ft_rotate_to_top(t_stack **stack, int pos)
 			pos--;
 		}
 	}
+}
 
+void	ft_rotate_to_top_a(t_stack **stack, int pos)
+{
+	int	median;
+	int	len;
 
+	len = ft_stack_last(*stack)->pos;
+	median = ft_median(stack);
+	if (pos > median)
+	{
+		while (pos <= len)
+		{
+			ft_lst_reverse_rotate_a(stack);
+			pos++;
+		}
+	}
+	else
+	{
+		while (pos > 1)
+		{
+			ft_lst_rotate_a(stack);
+			pos--;
+		}
+	}
 }
 
 

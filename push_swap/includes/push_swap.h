@@ -6,7 +6,7 @@
 /*   By: kane <kane@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/22 02:23:14 by mkane             #+#    #+#             */
-/*   Updated: 2024/02/03 02:33:28 by kane             ###   ########.fr       */
+/*   Updated: 2024/02/03 05:36:10 by kane             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,7 @@ int			ft_target_a(t_stack **stack, int nbr);
 int			ft_cost(t_stack **a, t_stack **b, int nbr_a, int nbr_b);
 int			ft_max_cost(int cost_a, int cost_b);
 int			ft_find_pos(t_stack **stack, int nbr);
-void		ft_rotate_to_top(t_stack **stack, int pos);
+void		ft_rotate_to_top_b(t_stack **stack, int pos);
+void		ft_rotate_to_top_a(t_stack **stack, int pos);
 int			ft_reverse_pos(t_stack **stack, int pos);
 #endif
