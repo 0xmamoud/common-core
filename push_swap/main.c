@@ -6,7 +6,7 @@
 /*   By: kane <kane@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/22 02:27:47 by mkane             #+#    #+#             */
-/*   Updated: 2024/01/31 11:44:29 by kane             ###   ########.fr       */
+/*   Updated: 2024/02/03 05:03:57 by kane             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,12 @@
 
 int	main(int argc, char **argv)
 {
-	t_env	env;
+	t_stack	*stack_a;
+	t_stack	*stack_b;
 	char	*tab;
 
-	env.stack_a = NULL;
-	env.stack_b = NULL;
+	stack_a = NULL;
+	stack_b = NULL;
 	if (argc < 2)
 		return (0);
 	tab = join_argv(argc, argv);
@@ -28,14 +29,14 @@ int	main(int argc, char **argv)
 		free(tab);
 		return (0);
 	}
-	env.stack_a = ft_fill_stack_a(tab);
-	ft_push_swap(&env.stack_a, &env.stack_b);
-	t_stack *tmp = env.stack_a;
-	while (tmp)
-	{
-		ft_printf("%d\n", tmp->nb);
-		tmp = tmp->next;
-	}
-	ft_free_stack(env.stack_a);
+	stack_a = ft_fill_stack_a(tab);
+	ft_push_swap(&stack_a, &stack_b);
+	// t_stack *tmp = stack_a;
+	// while (tmp)
+	// {
+	// 	ft_printf("%d\n", tmp->nb);
+	// 	tmp = tmp->next;
+	// }
+	ft_free_stack(stack_a);
 	return (0);
 }

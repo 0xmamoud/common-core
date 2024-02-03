@@ -6,7 +6,7 @@
 /*   By: kane <kane@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/22 02:23:14 by mkane             #+#    #+#             */
-/*   Updated: 2024/01/31 10:33:36 by kane             ###   ########.fr       */
+/*   Updated: 2024/02/03 02:33:28 by kane             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,14 @@ void		ft_free_tab(char **tab);
 void		ft_free_stack(t_stack *stack);
 void		ft_stack_add_front(t_stack **stack, t_stack *new);
 void		ft_update_index(t_stack **stack);
+int			ft_check_sorted(t_stack **stack);
+int			ft_median(t_stack **stack);
+int			ft_min(t_stack **stack);
+int			ft_min_pos(t_stack **stack);
+int			ft_max(t_stack **stack);
+int			ft_max_pos(t_stack **stack);
+long long	ft_long_atoi(const char *nptr);
+
 void		ft_lst_swap(t_stack **stack);
 void		ft_lst_swap_a(t_stack **stack);
 void		ft_lst_swap_b(t_stack **stack);
@@ -50,26 +58,23 @@ void		ft_lst_reverse_rotate(t_stack **stack);
 void		ft_lst_reverse_rotate_a(t_stack **stack);
 void		ft_lst_reverse_rotate_b(t_stack **stack);
 void		ft_lst_reverse_rotate_both(t_stack **stack_a, t_stack **stack_b);
-void		ft_sort_three(t_stack **stack_a);
-void		ft_push_swap(t_stack **stack_a, t_stack **stack_b);
+
 int			ft_check_digit(char *str);
 int			parsing(char *argv);
 int			ft_check_atoi(char **str);
-long long	ft_long_atoi(const char *nptr);
 char		*join_argv(int argc, char **argv);
-int			ft_median(t_stack **stack);
-int			ft_min(t_stack **stack);
-int			ft_min_pos(t_stack **stack);
-int			ft_max(t_stack **stack);
-int			ft_max_pos(t_stack **stack);
+
+void		ft_push_swap(t_stack **stack_a, t_stack **stack_b);
+void		ft_sort_three(t_stack **stack_a);
 void		ft_sort_five(t_stack **stack_a, t_stack **stack_b);
 void		ft_sort(t_stack **a, t_stack **b);
-int			ft_find_pos(t_stack **stack, int nbr);
-// void		ft_push_back(t_stack **a, t_stack **b);
 void		ft_move(t_stack **a, t_stack **b, int nbr_a, int nbr_b);
 void		ft_lowest_cost(t_stack **a, t_stack **b, int *nbr_a, int *nbr_b);
 int			ft_target(t_stack **stack, int nbr);
 int			ft_target_a(t_stack **stack, int nbr);
 int			ft_cost(t_stack **a, t_stack **b, int nbr_a, int nbr_b);
 int			ft_max_cost(int cost_a, int cost_b);
+int			ft_find_pos(t_stack **stack, int nbr);
+void		ft_rotate_to_top(t_stack **stack, int pos);
+int			ft_reverse_pos(t_stack **stack, int pos);
 #endif
