@@ -6,7 +6,7 @@
 #    By: kane <kane@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/18 18:09:23 by mkane             #+#    #+#              #
-#    Updated: 2024/01/29 20:36:10 by kane             ###   ########.fr        #
+#    Updated: 2024/02/03 05:54:28 by kane             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -40,6 +40,7 @@ SRC = main.c\
 	$(UTILS_DIR)median.c\
 	$(UTILS_DIR)min.c\
 	$(UTILS_DIR)max.c\
+	$(UTILS_DIR)ft_check_sorted.c\
 
 OBJ = $(SRC:.c=.o)
 

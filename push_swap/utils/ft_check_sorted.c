@@ -6,7 +6,7 @@
 /*   By: kane <kane@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/03 00:20:21 by kane              #+#    #+#             */
-/*   Updated: 2024/02/03 00:21:45 by kane             ###   ########.fr       */
+/*   Updated: 2024/02/03 21:08:12 by kane             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int	ft_check_sorted(t_stack **stack)
 	t_stack	*tmp;
 
 	tmp = *stack;
-	while (tmp)
+	while (tmp && tmp->next)
 	{
 		if (tmp->nb > tmp->next->nb)
 			return (0);
