@@ -6,7 +6,7 @@
 /*   By: kane <kane@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/22 02:27:47 by mkane             #+#    #+#             */
-/*   Updated: 2024/02/06 00:02:16 by kane             ###   ########.fr       */
+/*   Updated: 2024/02/06 00:20:26 by kane             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,9 @@ int	main(int argc, char **argv)
 		return (0);
 	}
 	stack_a = ft_fill_stack_a(tab);
+	free(tab);
 	ft_push_swap(&stack_a, &stack_b);
-	t_stack *tmp = stack_a;
+	// t_stack *tmp = stack_a;
 	// while (tmp)
 	// {
 	// 	ft_printf("%d\n", tmp->nb);
