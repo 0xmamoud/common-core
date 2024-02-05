@@ -1,29 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   ft_find_pos.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kane <kane@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/18 19:48:56 by mkane             #+#    #+#             */
-/*   Updated: 2024/02/04 06:50:32 by kane             ###   ########.fr       */
+/*   Created: 2024/02/04 04:00:47 by kane              #+#    #+#             */
+/*   Updated: 2024/02/05 22:14:34 by kane             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/push_swap.h"
+#include "../includes/push_swap.h"
 
-void	ft_push_swap(t_stack **stack_a, t_stack **stack_b)
+int	ft_find_pos(t_stack **stack, int nbr)
 {
 	t_stack	*tmp;
 
-	tmp = *stack_a;
-	if (ft_check_sorted(stack_a))
-		return ;
-	if (ft_stack_last(tmp)->pos == 3)
-		ft_sort_three(stack_a);
-	else if (ft_stack_last(tmp)->pos < 6)
-		ft_sort_five(stack_a, stack_b);
-	else
-		ft_sort(stack_a, stack_b);
-
+	tmp = *stack;
+	while (tmp)
+	{
+		if (tmp->nb == nbr)
+			break ;
+		tmp = tmp->next;
+	}
+	return (tmp->pos);
 }
