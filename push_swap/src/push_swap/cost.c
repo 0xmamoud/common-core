@@ -6,7 +6,7 @@
 /*   By: kane <kane@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/04 05:42:05 by kane              #+#    #+#             */
-/*   Updated: 2024/02/05 23:41:37 by kane             ###   ########.fr       */
+/*   Updated: 2024/02/06 06:58:32 by kane             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,18 +63,22 @@ int	ft_min_cost(t_stack **a, t_stack **b, int nbr_a, int nbr_b)
 	t_cost	cost;
 	int		pos_a;
 	int		pos_b;
-	int		size_a;
-	int		size_b;
 
 	pos_a = ft_find_pos(a, nbr_a);
 	pos_b = ft_find_pos(b, nbr_b);
-	size_a = ft_stack_last(*a)->pos;
-	size_b = ft_stack_last(*b)->pos;
-	cost.ra_rb = pos_a + pos_b;
-	cost.rra_rrb = size_a - pos_a + size_b - pos_b + 2;
-	cost.rra_rb = size_a - pos_a + pos_b + 1;
-	cost.ra_rrb = pos_a + size_b - pos_b + 1;
+	cost.ra_rb = ft_compare_cost(pos_a, pos_b);
+	cost.rra_rrb = ft_compare_cost(ft_reverse_pos(a, pos_a),
+			ft_reverse_pos(b, pos_b));
+	cost.rra_rb = ft_reverse_pos(a, pos_a) + pos_b ;
+	cost.ra_rrb = pos_a + ft_reverse_pos(b, pos_b);
 	return (ft_cheaper_move(cost));
+}
+
+int	ft_compare_cost(int a, int b)
+{
+	if (a > b)
+		return (a);
+	return (b);
 }
 
 int	ft_cheaper_move(t_cost cost)

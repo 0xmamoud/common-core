@@ -6,7 +6,7 @@
 /*   By: kane <kane@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 14:54:33 by kane              #+#    #+#             */
-/*   Updated: 2024/01/31 05:28:42 by kane             ###   ########.fr       */
+/*   Updated: 2024/02/06 07:19:44 by kane             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@ int	ft_median(t_stack **stack)
 	int	median;
 
 	len = ft_stack_last(*stack)->pos;
-
 	if (len % 2 == 0)
 		median = len / 2;
 	else

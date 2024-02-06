@@ -6,7 +6,7 @@
 /*   By: kane <kane@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/22 02:27:47 by mkane             #+#    #+#             */
-/*   Updated: 2024/02/06 00:20:26 by kane             ###   ########.fr       */
+/*   Updated: 2024/02/06 08:01:41 by kane             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,18 +26,14 @@ int	main(int argc, char **argv)
 	if (!parsing(tab))
 	{
 		ft_printf("Error\n");
-		free(tab);
+		if (argc > 2)
+			free(tab);
 		return (0);
 	}
 	stack_a = ft_fill_stack_a(tab);
-	free(tab);
+	if (argc > 2)
+		free(tab);
 	ft_push_swap(&stack_a, &stack_b);
-	// t_stack *tmp = stack_a;
-	// while (tmp)
-	// {
-	// 	ft_printf("%d\n", tmp->nb);
-	// 	tmp = tmp->next;
-	// }
 	ft_free_stack(stack_a);
 	return (0);
 }

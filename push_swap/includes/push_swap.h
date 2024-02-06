@@ -6,7 +6,7 @@
 /*   By: kane <kane@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/22 02:23:14 by mkane             #+#    #+#             */
-/*   Updated: 2024/02/05 23:47:31 by kane             ###   ########.fr       */
+/*   Updated: 2024/02/06 07:17:31 by kane             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,14 +69,19 @@ char		*join_argv(int argc, char **argv);
 
 void		ft_cost(t_stack **a, t_stack **b, int *nbr_a, int *nbr_b);
 int			ft_target_nbr_b(int nbr, t_stack **b);
-int			ft_target_nbr_a(t_stack **a, int nbr);
 int			ft_min_cost(t_stack **a, t_stack **b, int nbr_a, int nbr_b);
+int			ft_compare_cost(int a, int b);
 int			ft_cheaper_move(t_cost cost);
 
 void		ft_push_swap(t_stack **stack_a, t_stack **stack_b);
 void		ft_sort_three(t_stack **stack_a);
 void		ft_sort_five(t_stack **stack_a, t_stack **stack_b);
 void		ft_sort(t_stack **a, t_stack **b);
-void		ft_mouve_to_top_b(t_stack **b, int pos);
-void		ft_mouve_to_top_a(t_stack **a, int pos);
+void		ft_move_to_top_b(t_stack **b, int pos);
+int			ft_reverse_pos(t_stack **stack, int pos);
+void		ft_double_rotation(t_stack **a, t_stack **b, int pos_a, int pos_b);
+void		ft_rra_rrb(t_stack **a, t_stack **b, int pos_a, int pos_b);
+void		ft_rra_rb(t_stack **a, t_stack **b, int pos_a, int pos_b);
+void		ft_ra_rrb(t_stack **a, t_stack **b, int pos_a, int pos_b);
+void		ft_ra_rb(t_stack **a, t_stack **b, int pos_a, int pos_b);
 #endif

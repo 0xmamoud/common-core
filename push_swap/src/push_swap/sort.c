@@ -6,7 +6,7 @@
 /*   By: kane <kane@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 20:36:22 by kane              #+#    #+#             */
-/*   Updated: 2024/02/05 23:58:00 by kane             ###   ########.fr       */
+/*   Updated: 2024/02/06 06:57:14 by kane             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,69 +19,72 @@ void	ft_sort(t_stack **a, t_stack **b)
 
 	ft_lst_push_b(a, b);
 	ft_lst_push_b(a, b);
-	while ((*a))
+	while (*a)
 	{
 		if (ft_min(b) > (*a)->nb || ft_max(b) < (*a)->nb)
 		{
-			ft_mouve_to_top_b(b, ft_max_pos(b));
+			ft_move_to_top_b(b, ft_max_pos(b));
 			ft_lst_push_b(a, b);
 		}
 		else
 		{
 			ft_cost(a, b, &nbr_a, &nbr_b);
-			ft_mouve_to_top_b(b, ft_find_pos(b, nbr_b));
-			ft_mouve_to_top_a(a, ft_find_pos(a, nbr_a));
+			ft_double_rotation(a, b, ft_find_pos(a, nbr_a),
+				ft_find_pos(b, nbr_b));
 			ft_lst_push_b(a, b);
 		}
 	}
-	// ft_mouve_to_top_b(b, ft_max_pos(b));
-	// ft_lst_push_a(b, a);
 	while (*b)
 	{
-		// int test = ft_target_nbr_a(a, (*b)->nb);
-		// ft_mouve_to_top_a(a, ft_find_pos(a, test));
-		// ft_lst_push_a(b, a);
-		ft_mouve_to_top_b(b, ft_max_pos(b));
+		ft_move_to_top_b(b, ft_max_pos(b));
 		ft_lst_push_a(b, a);
 	}
 }
 
-void	ft_mouve_to_top_b(t_stack **b, int pos)
+void	ft_double_rotation(t_stack **a, t_stack **b, int pos_a, int pos_b)
 {
-	while (pos > 1)
-	{
-		ft_lst_rotate_b(b);
-		pos--;
-	}
+	if (pos_a > ft_median(a) && pos_b > ft_median(b))
+		ft_rra_rrb(a, b, pos_a, pos_b);
+	else if (pos_a > ft_median(a) && pos_b <= ft_median(b))
+		ft_rra_rb(a, b, pos_a, pos_b);
+	else if (pos_a <= ft_median(a) && pos_b > ft_median(b))
+		ft_ra_rrb(a, b, pos_a, pos_b);
+	else
+		ft_ra_rb(a, b, pos_a, pos_b);
 }
 
-
-void	ft_mouve_to_top_a(t_stack **a, int pos)
+void	ft_move_to_top_b(t_stack **b, int pos)
 {
-	while (pos > 1)
+	if (pos > ft_median(b))
 	{
-		ft_lst_rotate_a(a);
-		pos--;
-	}
-}
-
-int	ft_target_nbr_a(t_stack **a, int nbr)
-{
-	t_stack	*tmp;
-	int		nbr_a;
-	int		diff;
-
-	tmp = *a;
-	nbr_a = ft_max(a);
-	diff = 2147483647;
-	while (tmp)
-	{
-		if (tmp->nb - nbr < diff && diff > 0)
+		pos = ft_reverse_pos(b, pos);
+		while (pos > 1)
 		{
-			diff = nbr - tmp->nb;
-			nbr_a = tmp->nb;
+			ft_lst_reverse_rotate_b(b);
+			pos--;
 		}
-		tmp = tmp->next;
 	}
-	return (nbr_a);
+	else
+	{
+		while (pos > 1)
+		{
+			ft_lst_rotate_b(b);
+			pos--;
+		}
+	}
+}
+
+int	ft_reverse_pos(t_stack **stack, int pos)
+{
+	int		size;
+	int		i;
+
+	size = ft_stack_last(*stack)->pos;
+	i = 1;
+	while (size >= pos)
+	{
+		i++;
+		pos++;
+	}
+	return (i);
 }
