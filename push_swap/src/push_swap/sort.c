@@ -6,7 +6,7 @@
 /*   By: kane <kane@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 20:36:22 by kane              #+#    #+#             */
-/*   Updated: 2024/02/06 06:57:14 by kane             ###   ########.fr       */
+/*   Updated: 2024/02/11 20:44:47 by kane             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,11 +43,20 @@ void	ft_sort(t_stack **a, t_stack **b)
 
 void	ft_double_rotation(t_stack **a, t_stack **b, int pos_a, int pos_b)
 {
-	if (pos_a > ft_median(a) && pos_b > ft_median(b))
+	t_cost	cost;
+	int		min_cost;
+
+	cost.ra_rb = ft_compare_cost(pos_a, pos_b);
+	cost.rra_rrb = ft_compare_cost(ft_reverse_pos(a, pos_a),
+			ft_reverse_pos(b, pos_b));
+	cost.rra_rb = ft_reverse_pos(a, pos_a) + pos_b ;
+	cost.ra_rrb = pos_a + ft_reverse_pos(b, pos_b);
+	min_cost = ft_cheaper_move(cost);
+	if (min_cost == cost.rra_rrb)
 		ft_rra_rrb(a, b, pos_a, pos_b);
-	else if (pos_a > ft_median(a) && pos_b <= ft_median(b))
+	else if (min_cost == cost.rra_rb)
 		ft_rra_rb(a, b, pos_a, pos_b);
-	else if (pos_a <= ft_median(a) && pos_b > ft_median(b))
+	else if (min_cost == cost.ra_rrb)
 		ft_ra_rrb(a, b, pos_a, pos_b);
 	else
 		ft_ra_rb(a, b, pos_a, pos_b);
