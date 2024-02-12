@@ -6,37 +6,48 @@
 #    By: kane <kane@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/08 04:48:00 by kane              #+#    #+#              #
-#    Updated: 2024/02/11 20:35:58 by kane             ###   ########.fr        #
+#    Updated: 2024/02/12 01:05:43 by kane             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = so_long
 
-SRC = main.C
+SRC = main.c
 
 OBJ = $(SRC:.c=.o)
+
+LIBFT = ./lib/libft
+
+LIBFTFLAGS = -L. -lft
+
+MLX = ./lib/minilibx-linux
+
+MLXFLAGS = -L. -Lmlx_linux -lmlx -Imlx_linux -lXext -lX11 -lm -lz
 
 CC = cc
 
 CFLAGS = -Wall -Wextra -Werror -g
 
-HEADERS =
+HEADERS = ./includes/so_long.h
 
 all: $(NAME)
 
 $(NAME): $(OBJ)
-	make -C libft
-	mv libft/libft.a .
-	$(CC) $(CFLAGS) -I$(HEADERS) ${OBJ} -L. -lft -o $(NAME)
+	make -C $(LIBFT)
+	mv $(LIBFT)/libft.a .
+	make -C $(MLX)
+	mv $(MLX)/libmlx.a .
+	$(CC) $(CFLAGS) -I$(HEADERS) ${OBJ} $(LIBFTFLAGS) $(MLXFLAGS) -o $(NAME)
 
 %.o: %.c
-	$(CC) -Wall -Wextra -Werror -Imlx -c $< -o $@
+	$(CC) $(CFLAGS) -include$(HEADERS) -o $@ -c $<
 
 clean:
-	make -C libft clean
+	make -C $(LIBFT) clean
+	make -C $(MLX) clean
 	-rm -f $(OBJ)
 
 fclean: clean
-	-rm -f $(NAME) libft.a
+	-rm -f $(NAME) libft.a libmlx.a
 
 re: fclean all
