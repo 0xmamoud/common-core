@@ -1,24 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_create_map.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mkane <mkane@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/12 00:58:56 by kane              #+#    #+#             */
-/*   Updated: 2024/02/13 07:51:10 by mkane            ###   ########.fr       */
+/*   Created: 2024/02/13 04:08:08 by mkane             #+#    #+#             */
+/*   Updated: 2024/02/13 07:30:41 by mkane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./includes/so_long.h"
+#include "../../includes/so_long.h"
 
-int	main(void)
+char	**ft_create_map(int fd)
 {
-	t_data	data;
-	int		fd;
+	char	*tab;
+	char	*tmp;
+	char	*line;
+	char	**map;
 
-	fd = open("./maps/map.ber", O_RDONLY);
-	parsing(fd, &data);
-	close(fd);
-	free(data.map);
+	tab = ft_strdup("");
+	line = NULL;
+	while (1)
+	{
+		line = get_next_line(fd);
+		if (!line)
+			break ;
+		tmp = ft_strjoin(tab, line);
+		free(tab);
+		free(line);
+		tab = tmp;
+	}
+	map = ft_split(tab, '\n');
+	free(tab);
+	return (map);
 }

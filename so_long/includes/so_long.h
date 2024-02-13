@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kane <kane@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: mkane <mkane@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/12 00:57:00 by kane              #+#    #+#             */
-/*   Updated: 2024/02/12 01:02:01 by kane             ###   ########.fr       */
+/*   Updated: 2024/02/13 12:27:38 by mkane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,4 +19,36 @@
 # include <unistd.h>
 # include <fcntl.h>
 
+# define RECTANGLE_ERROR "your map is not a rectancle"
+# define CLOSED_ERROR "your map is not a rectangle"
+
+
+typedef struct s_data
+{
+	char	**map;
+	t_count	count;
+	t_pos	player_pos;
+}	t_data;
+
+typedef struct s_count
+{
+	int	collectible;
+	int	exit;
+	int	player;
+}	t_count;
+
+typedef struct s_pos
+{
+	int	pos_x;
+	int	pos_y;
+}	t_pos;
+
+
+// utils
+
+// parsing
+char	**ft_create_map(int fd);
+int		ft_check_map(t_data *data);
+int		parsing(int fd, t_data *data);
+int		ft_check_rectangle(char **str);
 #endif

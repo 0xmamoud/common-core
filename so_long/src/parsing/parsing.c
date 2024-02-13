@@ -1,24 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mkane <mkane@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/12 00:58:56 by kane              #+#    #+#             */
-/*   Updated: 2024/02/13 07:51:10 by mkane            ###   ########.fr       */
+/*   Created: 2024/02/13 07:38:36 by mkane             #+#    #+#             */
+/*   Updated: 2024/02/13 07:53:25 by mkane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./includes/so_long.h"
+#include "../../includes/so_long.h"
 
-int	main(void)
+int	parsing(int fd, t_data *data)
 {
-	t_data	data;
-	int		fd;
-
-	fd = open("./maps/map.ber", O_RDONLY);
-	parsing(fd, &data);
-	close(fd);
-	free(data.map);
+	data->map = ft_create_map(fd);
+	
+	return (1);
 }

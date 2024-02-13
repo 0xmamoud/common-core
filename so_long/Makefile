@@ -3,16 +3,27 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: kane <kane@student.42.fr>                  +#+  +:+       +#+         #
+#    By: mkane <mkane@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/08 04:48:00 by kane              #+#    #+#              #
-#    Updated: 2024/02/12 01:05:43 by kane             ###   ########.fr        #
+#    Updated: 2024/02/13 12:40:26 by mkane            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = so_long
 
-SRC = main.c
+PARSING_DIR = ./src/parsing/
+
+GAME_DIR = ./src/game/
+
+UTILS_DIR = ./utils/
+
+SRC = main.c\
+	$(PARSING_DIR)ft_create_map.c\
+	$(PARSING_DIR)check_map.c\
+	$(PARSING_DIR)check_map2.c\
+	$(PARSING_DIR)parsing.c\
+
 
 OBJ = $(SRC:.c=.o)
 
@@ -26,7 +37,7 @@ MLXFLAGS = -L. -Lmlx_linux -lmlx -Imlx_linux -lXext -lX11 -lm -lz
 
 CC = cc
 
-CFLAGS = -Wall -Wextra -Werror -g
+CFLAGS = -Wall -Wextra -Werror -g3
 
 HEADERS = ./includes/so_long.h
 
