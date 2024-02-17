@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mkane <mkane@student.42.fr>                +#+  +:+       +#+        */
+/*   By: kane <kane@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/12 00:57:00 by kane              #+#    #+#             */
-/*   Updated: 2024/02/13 12:27:38 by mkane            ###   ########.fr       */
+/*   Updated: 2024/02/17 22:45:46 by kane             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,15 +20,8 @@
 # include <fcntl.h>
 
 # define RECTANGLE_ERROR "your map is not a rectancle"
-# define CLOSED_ERROR "your map is not a rectangle"
-
-
-typedef struct s_data
-{
-	char	**map;
-	t_count	count;
-	t_pos	player_pos;
-}	t_data;
+# define CLOSED_ERROR "your map is not a closed map"
+# define CHARACTERS_ERROR "your map characters are not valid"
 
 typedef struct s_count
 {
@@ -42,6 +35,12 @@ typedef struct s_pos
 	int	pos_x;
 	int	pos_y;
 }	t_pos;
+typedef struct s_data
+{
+	char	**map;
+	t_count	count;
+	t_pos	player_pos;
+}	t_data;
 
 
 // utils
@@ -51,4 +50,10 @@ char	**ft_create_map(int fd);
 int		ft_check_map(t_data *data);
 int		parsing(int fd, t_data *data);
 int		ft_check_rectangle(char **str);
+int		ft_check_map(t_data *data);
+int		ft_check_rectangle(char **str);
+int		ft_check_closed(char **str);
+int		ft_check_closed2(char **str);
+int		ft_check_characters(t_data *data);
+void	ft_count_characters(t_data *data);
 #endif

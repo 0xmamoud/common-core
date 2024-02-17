@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mkane <mkane@student.42.fr>                +#+  +:+       +#+        */
+/*   By: kane <kane@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 04:02:26 by mkane             #+#    #+#             */
-/*   Updated: 2024/02/13 12:39:17 by mkane            ###   ########.fr       */
+/*   Updated: 2024/02/17 22:22:27 by kane             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,17 @@ int	ft_check_map(t_data *data)
 		ft_printf("%s\n", RECTANGLE_ERROR);
 		return (0);
 	}
-	if (!ft_check_closed)
+	if (!ft_check_closed(data->map))
 	{
 		ft_printf("%s\n", CLOSED_ERROR);
 		return (0);
 	}
-	return(1);
+	if (!ft_check_characters(data))
+	{
+		ft_printf("%s\n", CHARACTERS_ERROR);
+		return (0);
+	}
+	return (1);
 }
 
 int	ft_check_rectangle(char **str)
@@ -57,7 +62,7 @@ int	ft_check_closed(char **str)
 		j++;
 	}
 	j--;
-	while (str[i][j])
+	while (str[i])
 	{
 		if (str[i][j] != '1')
 			return (0);
@@ -75,7 +80,7 @@ int	ft_check_closed2(char **str)
 
 	i = 0;
 	j = 0;
-	while (str[i][j])
+	while (str[i])
 	{
 		if (str[i][j] != '1')
 			return (0);
