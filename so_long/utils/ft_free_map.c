@@ -1,26 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parsing.c                                          :+:      :+:    :+:   */
+/*   ft_free_map.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kane <kane@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/13 07:38:36 by mkane             #+#    #+#             */
-/*   Updated: 2024/02/18 00:22:42 by kane             ###   ########.fr       */
+/*   Created: 2024/02/17 23:51:12 by kane              #+#    #+#             */
+/*   Updated: 2024/02/17 23:51:51 by kane             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/so_long.h"
+#include "../includes/so_long.h"
 
-int	parsing(int fd, t_data *data)
+void	ft_free_map(char **map)
 {
-	data->count.player = 0;
-	data->count.exit = 0;
-	data->count.collectible = 0;
-	data->map = ft_create_map(fd);
-	if (!ft_check_map(data))
-		return (0);
-	if (!path_finding(data->map))
-		return (0);
-	return (1);
+	int	i;
+
+	i = 0;
+	while (map[i])
+	{
+		free(map[i]);
+		i++;
+	}
+	free(map);
 }

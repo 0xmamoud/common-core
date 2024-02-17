@@ -6,7 +6,7 @@
 /*   By: kane <kane@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/12 00:57:00 by kane              #+#    #+#             */
-/*   Updated: 2024/02/17 22:45:46 by kane             ###   ########.fr       */
+/*   Updated: 2024/02/18 00:20:38 by kane             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@
 # define RECTANGLE_ERROR "your map is not a rectancle"
 # define CLOSED_ERROR "your map is not a closed map"
 # define CHARACTERS_ERROR "your map characters are not valid"
+# define PATH_ERROR "your map is not valid"
 
 typedef struct s_count
 {
@@ -44,6 +45,7 @@ typedef struct s_data
 
 
 // utils
+void	ft_free_map(char **map);
 
 // parsing
 char	**ft_create_map(int fd);
@@ -56,4 +58,7 @@ int		ft_check_closed(char **str);
 int		ft_check_closed2(char **str);
 int		ft_check_characters(t_data *data);
 void	ft_count_characters(t_data *data);
+char	**copy_map(char **map);
+void	flood_fill(char **map, int x, int y);
+int		path_finding(char **map);
 #endif
