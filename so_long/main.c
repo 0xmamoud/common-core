@@ -6,7 +6,7 @@
 /*   By: kane <kane@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/12 00:58:56 by kane              #+#    #+#             */
-/*   Updated: 2024/02/17 22:49:02 by kane             ###   ########.fr       */
+/*   Updated: 2024/02/18 00:31:17 by kane             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,5 +22,6 @@ int	main(int ac, char **av)
 	map = ft_strjoin("./maps/", av[1]);
 	fd = open(map, O_RDONLY);
 	parsing(fd, &data);
-	free(data.map);
+	ft_free_map(data.map);
+	free(map);
 }
