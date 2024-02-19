@@ -2,6 +2,7 @@
 	"files.associations": {
 		"random": "c",
 		"push_swap.h": "c",
-		"so_long.h": "c"
+		"so_long.h": "c",
+		"keysym.h": "c"
 	}
 }

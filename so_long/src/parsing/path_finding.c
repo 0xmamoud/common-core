@@ -6,7 +6,7 @@
 /*   By: kane <kane@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/17 23:15:56 by kane              #+#    #+#             */
-/*   Updated: 2024/02/18 00:23:28 by kane             ###   ########.fr       */
+/*   Updated: 2024/02/19 00:59:06 by kane             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ int	path_finding(char **map)
 		j = 0;
 		while (copy[i][j])
 		{
-			if (copy[i][j] != '1' && copy[i][j] != 'X')
+			if (copy[i][j] != '1' && copy[i][j] != 'X' && copy[i][j] != '0')
 			{
 				ft_printf("%s\n", PATH_ERROR);
 				ft_free_map(copy);

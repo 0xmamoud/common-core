@@ -6,7 +6,7 @@
 #    By: kane <kane@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/08 04:48:00 by kane              #+#    #+#              #
-#    Updated: 2024/02/18 00:12:50 by kane             ###   ########.fr        #
+#    Updated: 2024/02/19 03:22:17 by kane             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,6 +24,7 @@ SRC = main.c\
 	$(PARSING_DIR)check_map2.c\
 	$(PARSING_DIR)parsing.c\
 	$(PARSING_DIR)path_finding.c\
+	$(GAME_DIR)init_game.c\
 	$(UTILS_DIR)ft_free_map.c\
 
 
