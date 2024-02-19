@@ -1,8 +1,10 @@
 {
-	"files.associations": {
-		"random": "c",
-		"push_swap.h": "c",
-		"so_long.h": "c",
-		"keysym.h": "c"
-	}
+  "files.associations": {
+    "*.ejs": "html",
+    "random": "c",
+    "push_swap.h": "c",
+    "so_long.h": "c",
+    "keysym.h": "c",
+    "fcntl.h": "c"
+  }
 }

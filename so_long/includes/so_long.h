@@ -15,9 +15,9 @@
 
 # include "../lib/libft/libft.h"
 # include "../lib/minilibx-linux/mlx.h"
-#include <X11/Xlib.h>
-#include <X11/Xutil.h>
-#include <X11/Xos.h>
+# include <X11/Xlib.h>
+# include <X11/Xutil.h>
+# include <X11/Xos.h>
 # include <stdio.h>
 # include <stdlib.h>
 # include <unistd.h>
@@ -40,6 +40,17 @@
 # define WIN_WIDTH 1024
 # define WIN_HEIGHT 768
 # define ASSET_SIZE 64
+
+// keys defines
+# define ESC 65307
+# define W 119
+# define A 97
+# define S 115
+# define D 100
+# define UP 65362
+# define DOWN 65364
+# define LEFT 65361
+# define RIGHT 65363
 
 typedef struct s_count
 {
@@ -69,14 +80,17 @@ typedef struct s_data
 	void		*mlx;
 	void		*win;
 	char		**map;
+	int			win_width;
+	int			win_height;
+	int			move;
 	t_count		count;
 	t_pos		player_pos;
 	t_assets	assets;
 }	t_data;
 
-
 // utils
 void	ft_free_map(char **map);
+void	ft_window_size(t_data *data);
 
 // parsing
 char	**ft_create_map(int fd);
@@ -98,4 +112,7 @@ void	init_game(t_data *data);
 void	ft_get_assets(t_data *data);
 void	ft_fill_window(t_data *data);
 void	put_image(t_data *data, int y, int x);
+int		ft_close(t_data *data);
+int		ft_movement(int keycode, t_data *data);
+void	ft_move(t_data *data, int x, int y);
 #endif

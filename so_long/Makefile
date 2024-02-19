@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: kane <kane@student.42.fr>                  +#+  +:+       +#+         #
+#    By: mkane <mkane@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/08 04:48:00 by kane              #+#    #+#              #
-#    Updated: 2024/02/19 03:22:17 by kane             ###   ########.fr        #
+#    Updated: 2024/02/19 17:11:39 by mkane            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,7 +25,10 @@ SRC = main.c\
 	$(PARSING_DIR)parsing.c\
 	$(PARSING_DIR)path_finding.c\
 	$(GAME_DIR)init_game.c\
+	$(GAME_DIR)movement.c\
+	$(GAME_DIR)close_game.c\
 	$(UTILS_DIR)ft_free_map.c\
+	$(UTILS_DIR)ft_window_size.c\
 
 
 OBJ = $(SRC:.c=.o)

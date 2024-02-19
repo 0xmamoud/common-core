@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_game.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kane <kane@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: mkane <mkane@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/19 02:42:23 by kane              #+#    #+#             */
-/*   Updated: 2024/02/19 03:49:13 by kane             ###   ########.fr       */
+/*   Updated: 2024/02/19 19:37:21 by mkane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,9 @@ void	init_game(t_data *data)
 		free(data->mlx);
 		return ;
 	}
-	data->win = mlx_new_window(data->mlx, WIN_WIDTH, WIN_HEIGHT, "so_long");
+	ft_window_size(data);
+	data->win = mlx_new_window(data->mlx,
+			data->win_width, data->win_height, "so_long");
 	if (!data->win)
 	{
 		free(data->mlx);
@@ -44,8 +46,6 @@ void	ft_get_assets(t_data *data)
 			&data->assets.width, &data->assets.height);
 	data->assets.wall = mlx_xpm_file_to_image(data->mlx, WALL,
 			&data->assets.width, &data->assets.height);
-	ft_printf("assets: %p %p %p %p %p\n", data->assets.wall, data->assets.floor,
-		data->assets.collectible, data->assets.exit, data->assets.player);
 	if (!data->assets.wall || !data->assets.floor || !data->assets.collectible
 		|| !data->assets.exit || !data->assets.player)
 	{
