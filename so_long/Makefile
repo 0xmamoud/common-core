@@ -6,7 +6,7 @@
 #    By: mkane <mkane@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/08 04:48:00 by kane              #+#    #+#              #
-#    Updated: 2024/02/19 17:11:39 by mkane            ###   ########.fr        #
+#    Updated: 2024/02/19 23:44:43 by mkane            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,6 +29,7 @@ SRC = main.c\
 	$(GAME_DIR)close_game.c\
 	$(UTILS_DIR)ft_free_map.c\
 	$(UTILS_DIR)ft_window_size.c\
+	$(UTILS_DIR)ft_check_extension.c\
 
 
 OBJ = $(SRC:.c=.o)

@@ -24,7 +24,7 @@
 # include <fcntl.h>
 
 // parsing defines
-# define RECTANGLE_ERROR "your map is not a rectancle"
+# define RECTANGLE_ERROR "your map is not a rectangle"
 # define CLOSED_ERROR "your map is not a closed map"
 # define CHARACTERS_ERROR "your map characters are not valid"
 # define PATH_ERROR "your map is not valid"
@@ -37,8 +37,8 @@
 # define PLAYER "assets/player.xpm"
 
 // game defines
-# define WIN_WIDTH 1024
-# define WIN_HEIGHT 768
+# define WIN_WIDTH 1921
+# define WIN_HEIGHT 1081
 # define ASSET_SIZE 64
 
 // keys defines
@@ -91,11 +91,12 @@ typedef struct s_data
 // utils
 void	ft_free_map(char **map);
 void	ft_window_size(t_data *data);
+int		ft_check_extension(char *str);
 
 // parsing
 char	**ft_create_map(int fd);
 int		ft_check_map(t_data *data);
-int		parsing(int fd, t_data *data);
+int		parsing(int fd, t_data *data, char *map);
 int		ft_check_rectangle(char **str);
 int		ft_check_map(t_data *data);
 int		ft_check_rectangle(char **str);
@@ -105,7 +106,7 @@ int		ft_check_characters(t_data *data);
 void	ft_count_characters(t_data *data);
 char	**copy_map(char **map);
 void	flood_fill(char **map, int x, int y);
-int		path_finding(char **map);
+int		path_finding(t_data *data);
 
 // game
 void	init_game(t_data *data);
@@ -113,6 +114,7 @@ void	ft_get_assets(t_data *data);
 void	ft_fill_window(t_data *data);
 void	put_image(t_data *data, int y, int x);
 int		ft_close(t_data *data);
+void	ft_clear_assets(t_data *data, int nbr);
 int		ft_movement(int keycode, t_data *data);
 void	ft_move(t_data *data, int x, int y);
 #endif

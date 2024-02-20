@@ -6,7 +6,7 @@
 /*   By: mkane <mkane@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 04:08:08 by mkane             #+#    #+#             */
-/*   Updated: 2024/02/13 07:30:41 by mkane            ###   ########.fr       */
+/*   Updated: 2024/02/19 23:27:03 by mkane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@ char	**ft_create_map(int fd)
 	char	**map;
 
 	tab = ft_strdup("");
-	line = NULL;
 	while (1)
 	{
 		line = get_next_line(fd);
@@ -30,6 +29,12 @@ char	**ft_create_map(int fd)
 		free(tab);
 		free(line);
 		tab = tmp;
+	}
+	if (ft_strlen(tab) <= 1 || tab[0] == '\n')
+	{
+		free(tab);
+		free(line);
+		return (NULL);
 	}
 	map = ft_split(tab, '\n');
 	free(tab);

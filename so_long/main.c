@@ -6,7 +6,7 @@
 /*   By: mkane <mkane@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/12 00:58:56 by kane              #+#    #+#             */
-/*   Updated: 2024/02/19 19:16:11 by mkane            ###   ########.fr       */
+/*   Updated: 2024/02/20 23:09:40 by mkane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,11 @@ int	main(int ac, char **av)
 
 	if (ac != 2)
 		return (ft_printf("Error\n"));
-	map = ft_strjoin("./maps/", av[1]);
+	if (!ft_check_extension(av[1]))
+		return (ft_printf("Error extension\n"));
+	map = ft_strjoin("", av[1]);
 	fd = open(map, O_RDONLY);
-	if (!parsing(fd, &data))
+	if (!parsing(fd, &data, map))
 	{
 		free(map);
 		ft_free_map(data.map);
