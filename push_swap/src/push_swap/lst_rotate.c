@@ -6,7 +6,7 @@
 /*   By: mkane <mkane@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/24 21:21:07 by mkane             #+#    #+#             */
-/*   Updated: 2024/01/18 19:29:17 by mkane            ###   ########.fr       */
+/*   Updated: 2024/02/21 01:14:45 by mkane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ void	ft_lst_rotate(t_stack **stack)
 	ft_stack_add_back(stack, tmp);
 	*stack = (*stack)->next;
 	tmp->next = NULL;
+	ft_update_index(stack);
 }
 
 void	ft_lst_rotate_a(t_stack **stack)

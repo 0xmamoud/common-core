@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kane <kane@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: mkane <mkane@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/22 18:42:57 by mkane             #+#    #+#             */
-/*   Updated: 2024/02/03 21:06:24 by kane             ###   ########.fr       */
+/*   Updated: 2024/02/22 00:41:51 by mkane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@ int	parsing(char *argv)
 {
 	char	**tab;
 
+	if (!argv)
+		return (0);
 	if (!ft_check_digit(argv))
 		return (0);
 	tab = ft_split(argv, ' ');

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   join_argv.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kane <kane@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: mkane <mkane@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/24 20:06:43 by mkane             #+#    #+#             */
-/*   Updated: 2024/02/06 00:19:53 by kane             ###   ########.fr       */
+/*   Updated: 2024/02/22 02:59:20 by mkane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@ char	*join_argv(int argc, char **argv)
 
 	if (argc == 2)
 		return (argv[1]);
+	if (!ft_isjoinable(argv))
+		return (NULL);
 	i = 1;
 	tab = ft_strdup("");
 	while (i < argc)
@@ -36,4 +38,26 @@ char	*join_argv(int argc, char **argv)
 		i++;
 	}
 	return (tab);
+}
+
+int	ft_isjoinable(char **str)
+{
+	int	i;
+	int	j;
+
+	i = 1;
+	while (str[i])
+	{
+		if (ft_strlen(str[i]) == 0)
+			return (0);
+		j = 0;
+		while (str[i][j] == ' ')
+		{
+			if (!str[i][j + 1])
+				return (0);
+			j++;
+		}
+		i++;
+	}
+	return (1);
 }

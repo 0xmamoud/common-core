@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kane <kane@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: mkane <mkane@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/22 02:23:14 by mkane             #+#    #+#             */
-/*   Updated: 2024/02/06 07:17:31 by kane             ###   ########.fr       */
+/*   Updated: 2024/02/22 00:59:48 by mkane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,7 @@ int			ft_check_digit(char *str);
 int			parsing(char *argv);
 int			ft_check_atoi(char **str);
 char		*join_argv(int argc, char **argv);
+int			ft_isjoinable(char **str);
 
 void		ft_cost(t_stack **a, t_stack **b, int *nbr_a, int *nbr_b);
 int			ft_target_nbr_b(int nbr, t_stack **b);
