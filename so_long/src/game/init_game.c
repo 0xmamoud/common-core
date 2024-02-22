@@ -6,7 +6,7 @@
 /*   By: mkane <mkane@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/19 02:42:23 by kane              #+#    #+#             */
-/*   Updated: 2024/02/20 23:00:39 by mkane            ###   ########.fr       */
+/*   Updated: 2024/02/22 04:04:40 by mkane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,8 @@ void	ft_fill_window(t_data *data)
 {
 	int	x;
 	int	y;
+	char	*move;
+	char	*tmp;
 
 	y = 0;
 	while (data->map[y])
@@ -83,6 +85,11 @@ void	ft_fill_window(t_data *data)
 		}
 		y++;
 	}
+	tmp = ft_itoa(data->move);
+	move = ft_strjoin("Moves: ", tmp);
+	free(tmp);
+	mlx_string_put(data->mlx, data->win, 20, 20, 0x000000, move);
+	free(move);
 }
 
 void	put_image(t_data *data, int y, int x)

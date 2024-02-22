@@ -6,7 +6,7 @@
 /*   By: mkane <mkane@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/19 17:05:33 by mkane             #+#    #+#             */
-/*   Updated: 2024/02/19 19:17:11 by mkane            ###   ########.fr       */
+/*   Updated: 2024/02/22 04:00:26 by mkane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,5 @@ void	ft_move(t_data *data, int x, int y)
 		data->count.collectible--;
 	data->map[x][y] = 'P';
 	data->move++;
-	ft_printf("Move: %d\n", data->move);
 	ft_fill_window(data);
 }
