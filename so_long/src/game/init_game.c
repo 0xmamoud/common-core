@@ -6,7 +6,7 @@
 /*   By: mkane <mkane@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/19 02:42:23 by kane              #+#    #+#             */
-/*   Updated: 2024/02/22 04:04:40 by mkane            ###   ########.fr       */
+/*   Updated: 2024/02/22 04:09:12 by mkane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void	init_game(t_data *data)
 		free(data->mlx);
 		exit(0);
 	}
-	 data->win = mlx_new_window(data->mlx,
+	data->win = mlx_new_window(data->mlx,
 			data->win_width, data->win_height, "so_long");
 	if (!data->win)
 	{
@@ -69,8 +69,8 @@ void	ft_get_assets(t_data *data)
 
 void	ft_fill_window(t_data *data)
 {
-	int	x;
-	int	y;
+	int		x;
+	int		y;
 	char	*move;
 	char	*tmp;
 
