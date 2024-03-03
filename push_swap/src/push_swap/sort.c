@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sort.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mkane <mkane@student.42.fr>                +#+  +:+       +#+        */
+/*   By: kane <kane@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 20:36:22 by kane              #+#    #+#             */
-/*   Updated: 2024/02/21 21:07:55 by mkane            ###   ########.fr       */
+/*   Updated: 2024/03/03 20:28:55 by kane             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,26 +19,22 @@ void	ft_sort(t_stack **a, t_stack **b)
 
 	ft_lst_push_b(a, b);
 	ft_lst_push_b(a, b);
-	while (*a)
+	while (ft_stack_last(*a)->pos > 3)
 	{
-		if (ft_min(b) > (*a)->nb || ft_max(b) < (*a)->nb)
-		{
-			ft_move_to_top_b(b, ft_max_pos(b));
-			ft_lst_push_b(a, b);
-		}
-		else
-		{
-			ft_cost(a, b, &nbr_a, &nbr_b);
-			ft_double_rotation(a, b, ft_find_pos(a, nbr_a),
-				ft_find_pos(b, nbr_b));
-			ft_lst_push_b(a, b);
-		}
+		ft_cost(a, b, &nbr_a, &nbr_b);
+		ft_double_rotation(a, b, ft_find_pos(a, nbr_a),
+			ft_find_pos(b, nbr_b));
+		ft_lst_push_b(a, b);
 	}
+	ft_sort_three(a);
 	while (*b)
 	{
-		ft_move_to_top_b(b, ft_max_pos(b));
+		ft_cost_a(a, b, &nbr_a, &nbr_b);
+		ft_double_rotation(a, b, ft_find_pos(a, nbr_a),
+			ft_find_pos(b, nbr_b));
 		ft_lst_push_a(b, a);
 	}
+	ft_move_to_top_a(a, ft_min_pos(a));
 }
 
 void	ft_double_rotation(t_stack **a, t_stack **b, int pos_a, int pos_b)
@@ -60,6 +56,27 @@ void	ft_double_rotation(t_stack **a, t_stack **b, int pos_a, int pos_b)
 		ft_ra_rrb(a, b, pos_a, pos_b);
 	else
 		ft_ra_rb(a, b, pos_a, pos_b);
+}
+
+void	ft_move_to_top_a(t_stack **a, int pos)
+{
+	if (pos > ft_median(a))
+	{
+		pos = ft_reverse_pos(a, pos);
+		while (pos > 1)
+		{
+			ft_lst_reverse_rotate_a(a);
+			pos--;
+		}
+	}
+	else
+	{
+		while (pos > 1)
+		{
+			ft_lst_rotate_a(a);
+			pos--;
+		}
+	}
 }
 
 void	ft_move_to_top_b(t_stack **b, int pos)

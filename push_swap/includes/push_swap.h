@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mkane <mkane@student.42.fr>                +#+  +:+       +#+        */
+/*   By: kane <kane@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/22 02:23:14 by mkane             #+#    #+#             */
-/*   Updated: 2024/02/22 00:59:48 by mkane            ###   ########.fr       */
+/*   Updated: 2024/03/03 19:56:48 by kane             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,12 +73,16 @@ int			ft_target_nbr_b(int nbr, t_stack **b);
 int			ft_min_cost(t_stack **a, t_stack **b, int nbr_a, int nbr_b);
 int			ft_compare_cost(int a, int b);
 int			ft_cheaper_move(t_cost cost);
+void		ft_cost_a(t_stack **a, t_stack **b, int *nbr_a, int *nbr_b);
+int			ft_target_nbr_a(int nbr, t_stack **a);
+
 
 void		ft_push_swap(t_stack **stack_a, t_stack **stack_b);
 void		ft_sort_three(t_stack **stack_a);
 void		ft_sort_five(t_stack **stack_a, t_stack **stack_b);
 void		ft_sort(t_stack **a, t_stack **b);
 void		ft_move_to_top_b(t_stack **b, int pos);
+void		ft_move_to_top_a(t_stack **a, int pos);
 int			ft_reverse_pos(t_stack **stack, int pos);
 void		ft_double_rotation(t_stack **a, t_stack **b, int pos_a, int pos_b);
 void		ft_rra_rrb(t_stack **a, t_stack **b, int pos_a, int pos_b);

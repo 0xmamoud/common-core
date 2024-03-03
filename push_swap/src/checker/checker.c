@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   checker.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mkane <mkane@student.42.fr>                +#+  +:+       +#+        */
+/*   By: kane <kane@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/21 21:41:38 by mkane             #+#    #+#             */
-/*   Updated: 2024/02/22 03:42:33 by mkane            ###   ########.fr       */
+/*   Updated: 2024/03/03 21:44:08 by kane             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ static int	ft_checker(t_stack **stack_a, t_stack **stack_b)
 			return (free(line), 0);
 		line = get_next_line(0);
 	}
-	if (!ft_check_sorted(stack_a) && *stack_b)
+	if (!ft_check_sorted(stack_a) || *stack_b)
 		return (0);
 	return (ft_printf("OK\n"), 1);
 }

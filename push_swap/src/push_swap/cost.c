@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cost.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mkane <mkane@student.42.fr>                +#+  +:+       +#+        */
+/*   By: kane <kane@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/04 05:42:05 by kane              #+#    #+#             */
-/*   Updated: 2024/02/21 20:28:49 by mkane            ###   ########.fr       */
+/*   Updated: 2024/03/03 21:01:35 by kane             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,6 @@ void	ft_cost(t_stack **a, t_stack **b, int *nbr_a, int *nbr_b)
 		tmp = tmp->next;
 	}
 }
-
 int	ft_target_nbr_b(int nbr, t_stack **b)
 {
 	t_stack	*tmp;
@@ -56,6 +55,52 @@ int	ft_target_nbr_b(int nbr, t_stack **b)
 		tmp = tmp->next;
 	}
 	return (nbr_b);
+}
+
+void	ft_cost_a(t_stack **a, t_stack **b, int *nbr_a, int *nbr_b)
+{
+	t_stack	*tmp;
+	int		nbr;
+	int		cost;
+	int		tmp_cost;
+
+	tmp = *b;
+	*nbr_a = ft_min(a);
+	*nbr_b = ft_max(b);
+	cost = 2147483647;
+	while (tmp)
+	{
+		nbr = ft_target_nbr_a(tmp->nb, a);
+		tmp_cost = ft_min_cost(a, b, nbr, tmp->nb);
+		if (tmp_cost < cost)
+		{
+			cost = tmp_cost;
+			*nbr_b = tmp->nb;
+			*nbr_a = nbr;
+		}
+		tmp = tmp->next;
+	}
+}
+
+int	ft_target_nbr_a(int nbr, t_stack **a)
+{
+	t_stack	*tmp;
+	int		nbr_a;
+	int		diff;
+
+	tmp = *a;
+	nbr_a = ft_min(a);
+	diff = 2147483647;
+	while (tmp)
+	{
+		if (tmp->nb - nbr < diff && tmp->nb > nbr)
+		{
+			diff = tmp->nb - nbr;
+			nbr_a = tmp->nb;
+		}
+		tmp = tmp->next;
+	}
+	return (nbr_a);
 }
 
 int	ft_min_cost(t_stack **a, t_stack **b, int nbr_a, int nbr_b)
