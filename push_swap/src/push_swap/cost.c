@@ -6,7 +6,7 @@
 /*   By: kane <kane@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/04 05:42:05 by kane              #+#    #+#             */
-/*   Updated: 2024/03/03 21:01:35 by kane             ###   ########.fr       */
+/*   Updated: 2024/03/03 22:10:17 by kane             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ void	ft_cost(t_stack **a, t_stack **b, int *nbr_a, int *nbr_b)
 		tmp = tmp->next;
 	}
 }
+
 int	ft_target_nbr_b(int nbr, t_stack **b)
 {
 	t_stack	*tmp;
@@ -117,25 +118,4 @@ int	ft_min_cost(t_stack **a, t_stack **b, int nbr_a, int nbr_b)
 	cost.rra_rb = ft_reverse_pos(a, pos_a) + pos_b ;
 	cost.ra_rrb = pos_a + ft_reverse_pos(b, pos_b);
 	return (ft_cheaper_move(cost));
-}
-
-int	ft_compare_cost(int a, int b)
-{
-	if (a > b)
-		return (a);
-	return (b);
-}
-
-int	ft_cheaper_move(t_cost cost)
-{
-	int	cheaper;
-
-	cheaper = cost.ra_rb;
-	if (cost.rra_rrb < cheaper)
-		cheaper = cost.rra_rrb;
-	if (cost.rra_rb < cheaper)
-		cheaper = cost.rra_rb;
-	if (cost.ra_rrb < cheaper)
-		cheaper = cost.ra_rrb;
-	return (cheaper);
 }

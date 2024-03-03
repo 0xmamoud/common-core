@@ -6,7 +6,7 @@
 /*   By: kane <kane@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/22 02:23:14 by mkane             #+#    #+#             */
-/*   Updated: 2024/03/03 19:56:48 by kane             ###   ########.fr       */
+/*   Updated: 2024/03/03 22:16:04 by kane             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,6 @@ int			ft_compare_cost(int a, int b);
 int			ft_cheaper_move(t_cost cost);
 void		ft_cost_a(t_stack **a, t_stack **b, int *nbr_a, int *nbr_b);
 int			ft_target_nbr_a(int nbr, t_stack **a);
-
 
 void		ft_push_swap(t_stack **stack_a, t_stack **stack_b);
 void		ft_sort_three(t_stack **stack_a);

@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: mkane <mkane@student.42.fr>                +#+  +:+       +#+         #
+#    By: kane <kane@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/18 18:09:23 by mkane             #+#    #+#              #
-#    Updated: 2024/02/22 01:46:05 by mkane            ###   ########.fr        #
+#    Updated: 2024/03/03 22:11:49 by kane             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -49,6 +49,8 @@ SRC = main.c\
 	$(UTILS_DIR)max.c\
 	$(UTILS_DIR)ft_check_sorted.c\
 	$(UTILS_DIR)ft_find_pos.c\
+	$(UTILS_DIR)ft_cheaper_move.c\
+	$(UTILS_DIR)ft_compare_cost.c\
 
 OBJ = $(SRC:.c=.o)
 
@@ -79,6 +81,8 @@ CHECKER_SRC = $(CHECKER_DIR)checker.c\
 			$(UTILS_DIR)max.c\
 			$(UTILS_DIR)ft_check_sorted.c\
 			$(UTILS_DIR)ft_find_pos.c\
+			$(UTILS_DIR)ft_cheaper_move.c\
+			$(UTILS_DIR)ft_compare_cost.c\
 			
 
 CHECKER_OBJ = $(CHECKER_SRC:.c=.o)
