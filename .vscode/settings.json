@@ -1,10 +1,11 @@
 {
-  "files.associations": {
-    "*.ejs": "html",
-    "random": "c",
-    "push_swap.h": "c",
-    "so_long.h": "c",
-    "keysym.h": "c",
-    "fcntl.h": "c"
-  }
+	"files.associations": {
+		"*.ejs": "html",
+		"random": "c",
+		"push_swap.h": "c",
+		"so_long.h": "c",
+		"keysym.h": "c",
+		"fcntl.h": "c",
+		"pipex.h": "c"
+	}
 }

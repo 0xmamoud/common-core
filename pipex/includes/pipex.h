@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pipex.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mkane <mkane@student.42.fr>                +#+  +:+       +#+        */
+/*   By: kane <kane@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/25 01:20:00 by mkane             #+#    #+#             */
-/*   Updated: 2024/02/27 08:31:24 by mkane            ###   ########.fr       */
+/*   Updated: 2024/03/09 23:03:11 by kane             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,13 @@
 # include <sys/types.h>
 # include <sys/wait.h>
 # include <string.h>
+
 #include "../libft/libft.h"
 
 typedef struct s_pipex
 {
-	char	**cmd;
 	char	*path;
+	char	**env;
 	int		fd[2];
 	int		infile;
 	int		outfile;
@@ -32,5 +33,8 @@ typedef struct s_pipex
 
 // utils
 void	ft_error(char *str);
+char	*ft_parse_args(t_pipex pipex, char *av);
+char	**ft_get_path(char **env);
+void	ft_free_split(char **str);
 
 #endif
