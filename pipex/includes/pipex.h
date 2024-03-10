@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pipex.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mkane <mkane@student.42.fr>                +#+  +:+       +#+        */
+/*   By: kane <kane@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/25 01:20:00 by mkane             #+#    #+#             */
-/*   Updated: 2024/03/10 16:59:09 by mkane            ###   ########.fr       */
+/*   Updated: 2024/03/10 19:53:14 by kane             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,6 @@ typedef struct s_pipex
 	char	*path;
 	char	**env;
 	char	**cmd;
-	int		fd[2];
 	int		infile;
 	int		outfile;
 }	t_pipex;

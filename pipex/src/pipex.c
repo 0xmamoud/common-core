@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pipex.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mkane <mkane@student.42.fr>                +#+  +:+       +#+        */
+/*   By: kane <kane@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/10 15:24:05 by mkane             #+#    #+#             */
-/*   Updated: 2024/03/10 17:15:48 by mkane            ###   ########.fr       */
+/*   Updated: 2024/03/10 22:02:13 by kane             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,17 +40,7 @@ void	ft_pipex(t_pipex *pipex, char *av, char **env)
 void	ft_execve(t_pipex *pipex, char *av, char **env)
 {
 	pipex->path = ft_parse_args(*pipex, av);
-	// if (!pipex->path)
-	// {
-	// 	free(pipex->path);
-	// 	ft_error("Error: command not found");
-	// }
 	pipex->cmd = ft_split(av, ' ');
-	// if (!pipex->cmd)
-	// {
-	// 	ft_free_split(pipex->cmd);
-	// 	ft_error("Error: command not found");
-	// }
 	if (execve(pipex->path, pipex->cmd, env) == -1)
 		ft_error("Error executing command");
 }
