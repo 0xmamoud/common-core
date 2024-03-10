@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: kane <kane@student.42.fr>                  +#+  +:+       +#+         #
+#    By: mkane <mkane@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/27 06:39:11 by mkane             #+#    #+#              #
-#    Updated: 2024/03/09 23:04:32 by kane             ###   ########.fr        #
+#    Updated: 2024/03/10 17:00:31 by mkane            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,13 +16,16 @@ BONUS = pipex_bonus
 
 PIPEX_DIR = ./src/pipex/
 UTILS_DIR = ./utils/
+SRC_DIR = ./src/
 
 
-SRC = $(PIPEX_DIR)pipex.c\
+SRC = $(SRC_DIR)pipex.c\
+		$(PIPEX_DIR)main.c\
 		$(UTILS_DIR)ft_error.c\
 		$(UTILS_DIR)ft_path.c\
 		$(UTILS_DIR)ft_parse_args.c\
 		$(UTILS_DIR)ft_free.c\
+		$(UTILS_DIR)ft_open_file.c\
 
 OBJ = $(SRC:.c=.o)
 

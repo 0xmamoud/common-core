@@ -1,39 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_parse_args.c                                    :+:      :+:    :+:   */
+/*   ft_open_file.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mkane <mkane@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/27 08:55:35 by mkane             #+#    #+#             */
-/*   Updated: 2024/03/10 16:59:32 by mkane            ###   ########.fr       */
+/*   Created: 2024/03/10 16:06:11 by mkane             #+#    #+#             */
+/*   Updated: 2024/03/10 16:08:32 by mkane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/pipex.h"
 
-char	*ft_parse_args(t_pipex pipex, char *av)
+int	ft_open(char *file, int flag)
 {
-	char	*path;
-	char	**args;
-	int		i;
+	int	fd;
 
-	args = ft_split(av, ' ');
-	if (!args)
-		ft_error("Error: command not found");
-	path = NULL;
-	i = 0;
-	while (pipex.env[i])
-	{
-		if (access(ft_strjoin(pipex.env[i], args[0]), F_OK | R_OK) == 0)
-		{
-			path = ft_strjoin(pipex.env[i], args[0]);
-			if (!path)
-				ft_error("Error: malloc failed");
-			break ;
-		}
-		i++;
-	}
-	ft_free_split(args);
-	return (path);
+	fd = open(file, flag);
+	if (fd == -1)
+		ft_error("Error opening file");
+	return (fd);
 }
+
