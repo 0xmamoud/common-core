@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pipex.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mkane <mkane@student.42.fr>                +#+  +:+       +#+        */
+/*   By: kane <kane@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/25 01:20:00 by mkane             #+#    #+#             */
-/*   Updated: 2024/03/12 17:06:47 by mkane            ###   ########.fr       */
+/*   Created: 2024/03/14 19:41:22 by kane              #+#    #+#             */
+/*   Updated: 2024/03/14 19:58:28 by kane             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,22 +23,12 @@
 
 typedef struct s_pipex
 {
-	char	*path;
-	char	**cmd;
-	char	**env;
-	int		infile;
-	int		outfile;
+	pid_t	pid;
 	int		fd[2];
+	int		fd_in;
+	int		fd_out;
+	char	**path;
+	char	***cmd;
 }	t_pipex;
-
-// utils
-void	ft_error(char *str);
-char	*ft_path(t_pipex pipex, char *av);
-char	**ft_env(char **env);
-void	ft_free_split(char **str);
-// src
-void	ft_pipe(t_pipex *pipex, char *av, char **env);
-void	ft_execve(t_pipex *pipex, char *av, char **env);
-void	ft_init(t_pipex *pipex, char *infile, char *outfile, char **env);
 
 #endif
