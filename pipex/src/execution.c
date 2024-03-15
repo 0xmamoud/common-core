@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   execution.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mkane <mkane@student.42.fr>                +#+  +:+       +#+        */
+/*   By: kane <kane@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/15 12:43:43 by mkane             #+#    #+#             */
-/*   Updated: 2024/03/15 14:45:51 by mkane            ###   ########.fr       */
+/*   Updated: 2024/03/15 20:34:41 by kane             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,9 @@ void	ft_pipex(t_pipex *pipex)
 	{
 		close(pipex->fd[1]);
 		dup2(pipex->fd[0], STDIN_FILENO);
-		// if (pipex->loop_index == pipex->len_cmd - 1)
-		waitpid(pipex->pid, NULL, 0);
+		close(pipex->fd[0]);
+		while (wait(NULL) > 0)
+			;
 	}
 }
 

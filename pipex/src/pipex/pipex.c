@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pipex.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mkane <mkane@student.42.fr>                +#+  +:+       +#+        */
+/*   By: kane <kane@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/15 07:00:03 by mkane             #+#    #+#             */
-/*   Updated: 2024/03/15 14:03:44 by mkane            ###   ########.fr       */
+/*   Updated: 2024/03/15 20:03:38 by kane             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ static	void	ft_init(t_pipex *pipex, char **argv, char **envp, int argc)
 	if (!envp)
 	{
 		write(2, "Error: no environment\n", 22);
-		exit(1);
+		exit(0);
 	}
 	pipex->len_cmd = argc - 3;
 	pipex->loop_index = 0;

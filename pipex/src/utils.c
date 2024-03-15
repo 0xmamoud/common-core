@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mkane <mkane@student.42.fr>                +#+  +:+       +#+        */
+/*   By: kane <kane@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/15 11:06:15 by mkane             #+#    #+#             */
-/*   Updated: 2024/03/15 14:02:35 by mkane            ###   ########.fr       */
+/*   Updated: 2024/03/15 20:04:38 by kane             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void	ft_error(char *str)
 {
 	perror(str);
-	exit(1);
+	exit(0);
 }
 
 void	ft_clean_cmds(t_pipex *pipex)
