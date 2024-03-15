@@ -6,7 +6,7 @@
 /*   By: kane <kane@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/15 12:43:43 by mkane             #+#    #+#             */
-/*   Updated: 2024/03/15 20:34:41 by kane             ###   ########.fr       */
+/*   Updated: 2024/03/15 20:38:51 by kane             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,6 @@ void	ft_pipex(t_pipex *pipex)
 	{
 		close(pipex->fd[1]);
 		dup2(pipex->fd[0], STDIN_FILENO);
-		close(pipex->fd[0]);
 		while (wait(NULL) > 0)
 			;
 	}
