@@ -6,7 +6,7 @@
 /*   By: mkane <mkane@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/15 11:06:15 by mkane             #+#    #+#             */
-/*   Updated: 2024/03/15 11:16:33 by mkane            ###   ########.fr       */
+/*   Updated: 2024/03/15 14:02:35 by mkane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,15 +18,35 @@ void	ft_error(char *str)
 	exit(1);
 }
 
-void	ft_free_tab(char **path)
+void	ft_clean_cmds(t_pipex *pipex)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	while (i < pipex->len_cmd)
+	{
+		j = 0;
+		while (pipex->cmd[i][j])
+		{
+			free(pipex->cmd[i][j]);
+			j++;
+		}
+		free(pipex->cmd[i]);
+		i++;
+	}
+	free(pipex->cmd);
+}
+
+void	ft_clean_path(t_pipex *pipex)
 {
 	int	i;
 
 	i = 0;
-	while (path[i])
+	while (i < pipex->len_cmd)
 	{
-		free(path[i]);
+		free(pipex->path[i]);
 		i++;
 	}
-	free(path);
+	free(pipex->path);
 }

@@ -6,7 +6,7 @@
 /*   By: mkane <mkane@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/14 19:41:22 by kane              #+#    #+#             */
-/*   Updated: 2024/03/15 13:10:49 by mkane            ###   ########.fr       */
+/*   Updated: 2024/03/15 14:03:14 by mkane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ void	ft_pipex(t_pipex *pipex);
 
 // utils
 void	ft_error(char *str);
-void	ft_free_tab(char **path);
+void	ft_clean_cmds(t_pipex *pipex);
+void	ft_clean_path(t_pipex *pipex);
 
 #endif
