@@ -3,50 +3,30 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mkane <mkane@student.42.fr>                +#+  +:+       +#+        */
+/*   By: kane <kane@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/15 11:06:15 by mkane             #+#    #+#             */
-/*   Updated: 2024/03/16 12:38:48 by mkane            ###   ########.fr       */
+/*   Updated: 2024/03/16 22:53:26 by kane             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/pipex.h"
 
-void	ft_error(char *str)
+void	ft_error(void)
 {
-	perror(str);
-	exit(0);
+	perror("");
+	exit(1);
 }
 
-void	ft_clean_cmds(t_pipex *pipex)
-{
-	int	i;
-	int	j;
-
-	i = 0;
-	while (i < pipex->len_cmd)
-	{
-		j = 0;
-		while (pipex->cmd[i][j])
-		{
-			free(pipex->cmd[i][j]);
-			j++;
-		}
-		free(pipex->cmd[i]);
-		i++;
-	}
-	free(pipex->cmd);
-}
-
-void	ft_clean_path(t_pipex *pipex)
+void	ft_free(char **str)
 {
 	int	i;
 
 	i = 0;
-	while (i < pipex->len_cmd)
+	while (str[i])
 	{
-		free(pipex->path[i]);
+		free(str[i]);
 		i++;
 	}
-	free(pipex->path);
+	free(str);
 }

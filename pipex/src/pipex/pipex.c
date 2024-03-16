@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pipex.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mkane <mkane@student.42.fr>                +#+  +:+       +#+        */
+/*   By: kane <kane@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/15 07:00:03 by mkane             #+#    #+#             */
-/*   Updated: 2024/03/16 16:17:07 by mkane            ###   ########.fr       */
+/*   Updated: 2024/03/16 22:18:49 by kane             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,14 +18,10 @@ static	void	ft_init(t_pipex *pipex, char **argv, int argc)
 	pipex->loop_index = 0;
 	pipex->fd_in = open(argv[1], O_RDONLY);
 	pipex->fd_out = open(argv[4], O_WRONLY | O_CREAT | O_TRUNC, 0777);
-	pipex->path = NULL;
-	pipex->cmd = NULL;
 }
 
 static	void	ft_close_fd(t_pipex *pipex)
 {
-	ft_clean_cmds(pipex);
-	ft_clean_path(pipex);
 	if (pipex->fd_in != -1)
 		close(pipex->fd_in);
 	if (pipex->fd_out != -1)
@@ -39,17 +35,9 @@ int	main(int argc, char **argv, char **envp)
 	if (argc == 5)
 	{
 		ft_init(&pipex, argv, argc);
-		if (!ft_parse_cmd(argv, &pipex))
-		{
-			write(2, "Error: malloc failed\n", 21);
-			close(pipex.fd_in);
-			close(pipex.fd_out);
-			exit(1);
-		}
-		ft_parse_path(envp, &pipex);
 		while (pipex.loop_index < pipex.len_cmd)
 		{
-			ft_pipex(&pipex);
+			ft_pipex(&pipex, argv[pipex.loop_index + 2], envp);
 			pipex.loop_index++;
 		}
 		pipex.loop_index = -1;

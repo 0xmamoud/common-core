@@ -6,7 +6,7 @@
 #    By: kane <kane@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/27 06:39:11 by mkane             #+#    #+#              #
-#    Updated: 2024/03/14 21:29:23 by kane             ###   ########.fr        #
+#    Updated: 2024/03/16 20:18:54 by kane             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,9 +26,8 @@ PARSING_DIR = ./src/parsing/
 SRC =\
 	$(PIPEX_DIR)pipex.c\
 	$(PIPELINE_DIR)pipeline.c\
-	$(PARSING_DIR)parse_cmd.c\
-	$(PARSING_DIR)parse_path.c\
 	$(SRC_DIR)execution.c\
+	$(SRC_DIR)path_parsing.c\
 	$(SRC_DIR)utils.c
 
 OBJ = $(SRC:.c=.o)
