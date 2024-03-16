@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_path.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kane <kane@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: mkane <mkane@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/15 07:23:12 by mkane             #+#    #+#             */
-/*   Updated: 2024/03/15 20:51:11 by kane             ###   ########.fr       */
+/*   Updated: 2024/03/16 15:10:37 by mkane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	ft_parse_path(char **envp, t_pipex *pipex)
 	int	i;
 
 	i = 0;
-	pipex->path = malloc(sizeof(char *) * pipex->len_cmd + 1);
+	pipex->path = malloc(sizeof(char *) * pipex->len_cmd);
 	if (!pipex->path)
 		exit_malloc(pipex);
 	while (i < pipex->len_cmd)
@@ -43,17 +43,21 @@ static	int	ft_access(char *cmd, t_pipex *pipex, int index, char **env_path)
 
 	if (!env_path)
 		return (0);
+	if (!cmd)
+	{
+		pipex->path[index] = ft_strdup("/chemin/incorrect");
+		if (!pipex->path[index])
+			return (ft_free(env_path), 0);
+		return (ft_free(env_path), 1);
+	}
 	int (i) = -1;
 	while (env_path[++i])
 	{
 		tmp = ft_strjoin(env_path[i], cmd);
 		if (!tmp)
 			return (ft_free(env_path), 0);
-		if (!access(tmp, F_OK | R_OK))
-		{
-			pipex->path[index] = tmp;
-			return (ft_free(env_path), 1);
-		}
+		if (!access(tmp, F_OK))
+			return (pipex->path[index] = tmp, ft_free(env_path), 1);
 		free(tmp);
 	}
 	pipex->path[index] = ft_strdup(cmd);

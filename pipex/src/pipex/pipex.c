@@ -3,22 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   pipex.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kane <kane@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: mkane <mkane@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/15 07:00:03 by mkane             #+#    #+#             */
-/*   Updated: 2024/03/15 21:15:43 by kane             ###   ########.fr       */
+/*   Updated: 2024/03/16 16:17:07 by mkane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/pipex.h"
 
-static	void	ft_init(t_pipex *pipex, char **argv, char **envp, int argc)
+static	void	ft_init(t_pipex *pipex, char **argv, int argc)
 {
-	if (!envp)
-	{
-		write(2, "Error: no environment\n", 22);
-		exit(0);
-	}
 	pipex->len_cmd = argc - 3;
 	pipex->loop_index = 0;
 	pipex->fd_in = open(argv[1], O_RDONLY);
@@ -27,13 +22,23 @@ static	void	ft_init(t_pipex *pipex, char **argv, char **envp, int argc)
 	pipex->cmd = NULL;
 }
 
+static	void	ft_close_fd(t_pipex *pipex)
+{
+	ft_clean_cmds(pipex);
+	ft_clean_path(pipex);
+	if (pipex->fd_in != -1)
+		close(pipex->fd_in);
+	if (pipex->fd_out != -1)
+		close(pipex->fd_out);
+}
+
 int	main(int argc, char **argv, char **envp)
 {
 	t_pipex	pipex;
 
 	if (argc == 5)
 	{
-		ft_init(&pipex, argv, envp, argc);
+		ft_init(&pipex, argv, argc);
 		if (!ft_parse_cmd(argv, &pipex))
 		{
 			write(2, "Error: malloc failed\n", 21);
@@ -47,8 +52,10 @@ int	main(int argc, char **argv, char **envp)
 			ft_pipex(&pipex);
 			pipex.loop_index++;
 		}
-		ft_clean_cmds(&pipex);
-		ft_clean_path(&pipex);
+		pipex.loop_index = -1;
+		while (++pipex.loop_index < pipex.len_cmd)
+			wait(NULL);
+		ft_close_fd(&pipex);
 	}
 	return (0);
 }

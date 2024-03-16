@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_cmd.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kane <kane@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: mkane <mkane@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/15 07:25:17 by mkane             #+#    #+#             */
-/*   Updated: 2024/03/15 21:13:27 by kane             ###   ########.fr       */
+/*   Updated: 2024/03/16 13:10:24 by mkane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,13 +22,10 @@ char	ft_parse_cmd(char **argv, t_pipex *pipex)
 	while (i < pipex->len_cmd)
 	{
 		pipex->cmd[i] = ft_split(argv[i + 2], ' ');
-		if (!pipex->cmd[i] || !pipex->cmd[i][0])
+		if (!pipex->cmd[i])
 		{
 			while (j <= i)
-			{
-				free(pipex->cmd[j]);
-				j++;
-			}
+				free(pipex->cmd[j++]);
 			free(pipex->cmd);
 			return (0);
 		}
