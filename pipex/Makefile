@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: kane <kane@student.42.fr>                  +#+  +:+       +#+         #
+#    By: mkane <mkane@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/27 06:39:11 by mkane             #+#    #+#              #
-#    Updated: 2024/03/16 20:18:54 by kane             ###   ########.fr        #
+#    Updated: 2024/03/18 17:25:23 by mkane            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,12 +25,19 @@ PARSING_DIR = ./src/parsing/
 
 SRC =\
 	$(PIPEX_DIR)pipex.c\
-	$(PIPELINE_DIR)pipeline.c\
 	$(SRC_DIR)execution.c\
 	$(SRC_DIR)path_parsing.c\
 	$(SRC_DIR)utils.c
 
 OBJ = $(SRC:.c=.o)
+
+BONUS_SRC =\
+	$(PIPELINE_DIR)pipeline.c\
+	$(SRC_DIR)execution.c\
+	$(SRC_DIR)path_parsing.c\
+	$(SRC_DIR)utils.c
+
+BONUS_OBJ = $(BONUS_SRC:.c=.o)
 
 CC = cc
 
@@ -44,15 +51,21 @@ $(NAME): $(OBJ)
 	@make -C libft
 	$(CC) $(CFLAGS) -I$(HEADERS) ${OBJ} -L./libft -lft -o $(NAME)
 
+bonus: $(BONUS)
+
+$(BONUS): $(BONUS_OBJ)
+	@make -C libft
+	$(CC) $(CFLAGS) -I$(HEADERS) ${BONUS_OBJ} -L./libft -lft -o $(BONUS)
+
 %.o : %.c
 	$(CC) $(CFLAGS) -include$(HEADERS) -o $@ -c $<
 
 clean:
 	@make -C libft clean
-	@rm -f $(OBJ)
+	@rm -f $(OBJ) $(BONUS_OBJ)
 
 fclean: clean
 	@make -C libft fclean
-	@rm -f $(NAME)
+	@rm -f $(NAME) $(BONUS)
 
 re: fclean all
