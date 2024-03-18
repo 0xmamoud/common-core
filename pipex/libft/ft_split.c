@@ -6,11 +6,24 @@
 /*   By: mkane <mkane@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/14 21:50:53 by mkane             #+#    #+#             */
-/*   Updated: 2024/02/13 07:16:34 by mkane            ###   ########.fr       */
+/*   Updated: 2024/03/18 15:10:53 by mkane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+
+static	void	ft_free(char **str)
+{
+	int	i;
+
+	i = 0;
+	while (str[i])
+	{
+		free(str[i]);
+		i++;
+	}
+	free(str);
+}
 
 static size_t	countword(const char *s, char set)
 {
@@ -71,7 +84,7 @@ char	**ft_split(char const *s, char c)
 		{
 			*(str + next) = ft_calloc(wordsize + 1, sizeof(char));
 			if (!*(str + next))
-				return (NULL);
+				return (ft_free(str), NULL);
 			ft_copy(s, *(str + next), c);
 			s += wordsize;
 			next++;

@@ -3,19 +3,30 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kane <kane@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: mkane <mkane@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/15 11:06:15 by mkane             #+#    #+#             */
-/*   Updated: 2024/03/16 22:53:26 by kane             ###   ########.fr       */
+/*   Updated: 2024/03/18 16:29:44 by mkane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/pipex.h"
 
-void	ft_error(void)
+void	ft_error(t_pipex *pipex, int error)
 {
-	perror("");
-	exit(1);
+	if (pipex->fd_in != -1)
+		close(pipex->fd_in);
+	if (pipex->fd_out != -1)
+		close(pipex->fd_out);
+	if (pipex->fd[0] != -1)
+		close(pipex->fd[0]);
+	if (pipex->fd[1] != -1)
+		close(pipex->fd[1]);
+	if (error == 1)
+		perror("pipex");
+	if (error == 127)
+		ft_putstr_fd("pipex: command not found\n", 2);
+	exit(error);
 }
 
 void	ft_free(char **str)

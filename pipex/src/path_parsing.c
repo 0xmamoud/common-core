@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   path_parsing.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kane <kane@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: mkane <mkane@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/16 20:18:10 by kane              #+#    #+#             */
-/*   Updated: 2024/03/16 22:58:25 by kane             ###   ########.fr       */
+/*   Updated: 2024/03/18 15:22:16 by mkane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,12 @@ char	*ft_path(char *cmd, char **envp)
 {
 	char	*path;
 
+	if (!cmd)
+		return (NULL);
 	if (!envp || !*envp)
-		return (cmd);
-	path = ft_parse_path(cmd, envp);
+		path = ft_strdup(cmd);
+	else
+		path = ft_parse_path(cmd, envp);
 	if (!path)
 		return (NULL);
 	return (path);
@@ -34,7 +37,7 @@ static	char	*ft_parse_path(char *cmd, char **envp)
 	char	**args;
 
 	int (i) = 0;
-	while (ft_strnstr(envp[i], "PATH=", 5) == 0)
+	while (ft_strnstr(envp[i], "PATH", 4) == 0)
 		i++;
 	args = ft_split(envp[i] + 5, ':');
 	if (!args)
@@ -54,7 +57,7 @@ static	char	*ft_parse_path(char *cmd, char **envp)
 		}
 		free(path);
 	}
-	return (cmd);
+	return (ft_free(args), cmd);
 }
 
 static	char	*ft_concat(char *args, char *cmd)

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pipex.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kane <kane@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: mkane <mkane@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/15 07:00:03 by mkane             #+#    #+#             */
-/*   Updated: 2024/03/16 22:18:49 by kane             ###   ########.fr       */
+/*   Updated: 2024/03/18 16:06:41 by mkane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,9 +40,8 @@ int	main(int argc, char **argv, char **envp)
 			ft_pipex(&pipex, argv[pipex.loop_index + 2], envp);
 			pipex.loop_index++;
 		}
-		pipex.loop_index = -1;
-		while (++pipex.loop_index < pipex.len_cmd)
-			wait(NULL);
+		while (wait(NULL) > 0)
+			;
 		ft_close_fd(&pipex);
 	}
 	return (0);
