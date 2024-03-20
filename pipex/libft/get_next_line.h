@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mkane <mkane@student.42.fr>                +#+  +:+       +#+        */
+/*   By: kane <kane@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/22 17:03:36 by kane              #+#    #+#             */
-/*   Updated: 2023/12/20 23:28:30 by mkane            ###   ########.fr       */
+/*   Updated: 2024/03/20 21:42:56 by kane             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 # include <fcntl.h>
 # include <unistd.h> 
 # ifndef BUFFER_SIZE
-#  define BUFFER_SIZE  1024
+#  define BUFFER_SIZE  1
 # endif
 
 typedef struct s_lst

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pipeline.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mkane <mkane@student.42.fr>                +#+  +:+       +#+        */
+/*   By: kane <kane@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/18 17:26:20 by mkane             #+#    #+#             */
-/*   Updated: 2024/03/20 16:20:08 by mkane            ###   ########.fr       */
+/*   Updated: 2024/03/20 22:43:15 by kane             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,9 +42,9 @@ static	void	ft_init(t_pipex *pipex, char **argv, int argc)
 
 static	void	ft_close_fd(t_pipex *pipex)
 {
-	if (pipex->here_doc == 1 && pipex->fd_in != -1)
+	if (pipex->here_doc)
 		unlink("here_doc");
-	else if (pipex->fd_in != -1)
+	if (pipex->fd_in != -1)
 		close(pipex->fd_in);
 	if (pipex->fd_out != -1)
 		close(pipex->fd_out);

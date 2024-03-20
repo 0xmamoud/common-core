@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   heredoc.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mkane <mkane@student.42.fr>                +#+  +:+       +#+        */
+/*   By: kane <kane@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/20 15:52:36 by mkane             #+#    #+#             */
-/*   Updated: 2024/03/20 16:27:04 by mkane            ###   ########.fr       */
+/*   Updated: 2024/03/20 21:48:02 by kane             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,13 +26,6 @@ static int	ft_open(t_pipex *pipex, char *delimiter)
 	return (fd);
 }
 
-static	void	ft_close(char *delimiter, int fd, char *line)
-{
-	free(delimiter);
-	free(line);
-	close(fd);
-}
-
 static	void	ft_handle_lim_on_hold(char **lim_on_hold, \
 char **line, char *delimiter)
 {
@@ -48,12 +41,22 @@ char **line, char *delimiter)
 	*lim_on_hold = NULL;
 }
 
+static	void	ft_close(char *delimiter, int fd, char **line)
+{
+	free(delimiter);
+	while (*line)
+	{
+		free(*line);
+		*line = get_next_line(fd);
+	}
+	close(fd);
+}
+
 void	here_doc(char *delimiter, t_pipex *pipex, char *argv)
 {
 	char	*line;
-	char	*lim_on_hold;
 
-	lim_on_hold = NULL;
+	char *(lim_on_hold) = NULL;
 	int (fd) = ft_open(pipex, delimiter);
 	while (1)
 	{
@@ -75,5 +78,5 @@ void	here_doc(char *delimiter, t_pipex *pipex, char *argv)
 		ft_putstr_fd(line, fd);
 		free(line);
 	}
-	ft_close(delimiter, fd, line);
+	ft_close(delimiter, fd, &line);
 }
