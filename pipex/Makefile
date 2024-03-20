@@ -6,7 +6,7 @@
 #    By: mkane <mkane@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/27 06:39:11 by mkane             #+#    #+#              #
-#    Updated: 2024/03/18 17:25:23 by mkane            ###   ########.fr        #
+#    Updated: 2024/03/20 15:51:59 by mkane            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,6 +33,7 @@ OBJ = $(SRC:.c=.o)
 
 BONUS_SRC =\
 	$(PIPELINE_DIR)pipeline.c\
+	$(PIPELINE_DIR)heredoc.c\
 	$(SRC_DIR)execution.c\
 	$(SRC_DIR)path_parsing.c\
 	$(SRC_DIR)utils.c

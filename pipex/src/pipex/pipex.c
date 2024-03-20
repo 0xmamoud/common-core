@@ -6,7 +6,7 @@
 /*   By: mkane <mkane@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/15 07:00:03 by mkane             #+#    #+#             */
-/*   Updated: 2024/03/18 16:06:41 by mkane            ###   ########.fr       */
+/*   Updated: 2024/03/20 13:15:16 by mkane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ static	void	ft_init(t_pipex *pipex, char **argv, int argc)
 {
 	pipex->len_cmd = argc - 3;
 	pipex->loop_index = 0;
+	pipex->here_doc = 0;
 	pipex->fd_in = open(argv[1], O_RDONLY);
 	pipex->fd_out = open(argv[4], O_WRONLY | O_CREAT | O_TRUNC, 0777);
 }

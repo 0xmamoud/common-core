@@ -6,7 +6,7 @@
 /*   By: mkane <mkane@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/18 17:26:20 by mkane             #+#    #+#             */
-/*   Updated: 2024/03/18 17:30:15 by mkane            ###   ########.fr       */
+/*   Updated: 2024/03/20 16:20:08 by mkane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,37 @@
 
 static	void	ft_init(t_pipex *pipex, char **argv, int argc)
 {
-	pipex->len_cmd = argc - 3;
+	char	*delimiter;
+
+	if (ft_strncmp(argv[1], "here_doc", 8) == 0)
+	{
+		delimiter = ft_strjoin(argv[2], "\n");
+		if (!delimiter || argc < 6)
+			exit(1);
+		pipex->here_doc = 1;
+		here_doc(delimiter, pipex, argv[2]);
+		pipex->len_cmd = argc - 4;
+		pipex->start = 3;
+		pipex->fd_out = open(argv[argc - 1], O_WRONLY | O_CREAT \
+		| O_APPEND, 0777);
+	}
+	else
+	{
+		pipex->here_doc = 0;
+		pipex->len_cmd = argc - 3;
+		pipex->start = 2;
+		pipex->fd_out = open(argv[argc - 1], O_WRONLY | O_CREAT \
+		| O_TRUNC, 0777);
+	}
 	pipex->loop_index = 0;
 	pipex->fd_in = open(argv[1], O_RDONLY);
-	pipex->fd_out = open(argv[argc - 1], O_WRONLY | O_CREAT | O_TRUNC, 0777);
 }
 
 static	void	ft_close_fd(t_pipex *pipex)
 {
-	if (pipex->fd_in != -1)
+	if (pipex->here_doc == 1 && pipex->fd_in != -1)
+		unlink("here_doc");
+	else if (pipex->fd_in != -1)
 		close(pipex->fd_in);
 	if (pipex->fd_out != -1)
 		close(pipex->fd_out);
@@ -37,7 +59,7 @@ int	main(int argc, char **argv, char **envp)
 		ft_init(&pipex, argv, argc);
 		while (pipex.loop_index < pipex.len_cmd)
 		{
-			ft_pipex(&pipex, argv[pipex.loop_index + 2], envp);
+			ft_pipex(&pipex, argv[pipex.loop_index + pipex.start], envp);
 			pipex.loop_index++;
 		}
 		while (wait(NULL) > 0)
