@@ -6,7 +6,7 @@
 /*   By: mkane <mkane@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/24 20:06:43 by mkane             #+#    #+#             */
-/*   Updated: 2024/02/22 02:59:20 by mkane            ###   ########.fr       */
+/*   Updated: 2024/03/21 17:42:47 by mkane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,28 +14,29 @@
 
 char	*join_argv(int argc, char **argv)
 {
-	int		i;
-	char	*tab;
 	char	*tmp;
 
 	if (argc == 2)
 		return (argv[1]);
-	if (!ft_isjoinable(argv))
+	char *(tab) = ft_strdup("");
+	if (!ft_isjoinable(argv) || !tab)
 		return (NULL);
-	i = 1;
-	tab = ft_strdup("");
-	while (i < argc)
+	int (i) = 0;
+	while (++i < argc)
 	{
 		tmp = ft_strjoin(tab, argv[i]);
+		if (!tmp)
+			return (free(tab), NULL);
 		free(tab);
 		tab = tmp;
 		if (i < argc - 1)
 		{
 			tmp = ft_strjoin(tab, " ");
+			if (!tmp)
+				return (free(tab), NULL);
 			free(tab);
 			tab = tmp;
 		}
-		i++;
 	}
 	return (tab);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kane <kane@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: mkane <mkane@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/22 17:07:40 by kane              #+#    #+#             */
-/*   Updated: 2024/03/20 19:06:38 by kane             ###   ########.fr       */
+/*   Updated: 2024/03/21 15:42:19 by mkane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -148,17 +148,16 @@ void	ft_clean_list(t_list **list)
 	*list = tmp;
 }
 
-// int main()
-// {
-// 	int fd = open("./test.txt", O_RDONLY);
-// 	int i = 0;
-// 	while (i < 300)
-// 	{
-// 		char *line = get_next_line(fd);
-// 		if (!line)
-// 			return (0) ;
-// 		printf("%s", line);
-// 		free(line);
-// 		i++;
-// 	}
-// }
+int main()
+{
+	int fd = open("./test.txt", O_RDONLY);
+	char *line;
+
+	line = get_next_line(fd);
+	while (line)
+	{
+		printf("%s\n", line);
+		free(line);
+		line = get_next_line(fd);
+	}
+}

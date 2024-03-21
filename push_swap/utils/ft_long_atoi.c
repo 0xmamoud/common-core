@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_long_atoi.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kane <kane@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: mkane <mkane@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/22 19:38:00 by mkane             #+#    #+#             */
-/*   Updated: 2024/02/03 23:35:15 by kane             ###   ########.fr       */
+/*   Updated: 2024/03/21 18:41:13 by mkane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,12 +29,14 @@ long long	ft_long_atoi(const char *nptr)
 			return (-2147483650);
 		nptr++;
 	}
+	if (!*nptr)
+		return (-2147483650);
 	while ((*nptr >= '0' && *nptr <= '9'))
 	{
 		char_to_int = (char_to_int * 10) + (*nptr - '0');
 		nptr++;
 	}
-	if (char_to_int > 2147483647 || char_to_int < -2147483648)
+	if (char_to_int * sign > 2147483647 || char_to_int * sign < -2147483648)
 		return (-2147483650);
 	return (sign * char_to_int);
 }

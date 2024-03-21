@@ -6,7 +6,7 @@
 /*   By: mkane <mkane@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/22 17:22:39 by kane              #+#    #+#             */
-/*   Updated: 2023/12/22 19:00:05 by mkane            ###   ########.fr       */
+/*   Updated: 2024/03/21 20:59:45 by mkane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ void	ft_free_lst(t_lst *lst)
 		free(tmp -> content);
 		next = tmp -> next;
 		free(tmp);
-		tmp = next;
+		tmp = tmp -> next;
 	}
 }
 

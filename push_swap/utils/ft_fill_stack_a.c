@@ -6,7 +6,7 @@
 /*   By: mkane <mkane@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/22 21:56:37 by mkane             #+#    #+#             */
-/*   Updated: 2024/01/21 23:36:29 by mkane            ###   ########.fr       */
+/*   Updated: 2024/03/21 18:42:13 by mkane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,8 @@ t_stack	*ft_fill_stack_a(char *argv)
 	i = 0;
 	stack_a = NULL;
 	tab = ft_split(argv, ' ');
+	if (!tab)
+		exit(1);
 	while (tab[i])
 	{
 		nb = ft_atoi(tab[i]);
