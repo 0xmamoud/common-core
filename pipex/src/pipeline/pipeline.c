@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pipeline.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kane <kane@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: mkane <mkane@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/18 17:26:20 by mkane             #+#    #+#             */
-/*   Updated: 2024/03/20 22:43:15 by kane             ###   ########.fr       */
+/*   Updated: 2024/03/21 13:54:54 by mkane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ static	void	ft_init(t_pipex *pipex, char **argv, int argc)
 		if (!delimiter || argc < 6)
 			exit(1);
 		pipex->here_doc = 1;
-		here_doc(delimiter, pipex, argv[2]);
+		here_doc(delimiter, argv[2]);
 		pipex->len_cmd = argc - 4;
 		pipex->start = 3;
 		pipex->fd_out = open(argv[argc - 1], O_WRONLY | O_CREAT \
@@ -59,7 +59,8 @@ int	main(int argc, char **argv, char **envp)
 		ft_init(&pipex, argv, argc);
 		while (pipex.loop_index < pipex.len_cmd)
 		{
-			ft_pipex(&pipex, argv[pipex.loop_index + pipex.start], envp);
+			ft_pipex(&pipex, argv[pipex.loop_index + pipex.start], \
+			envp, argv[1]);
 			pipex.loop_index++;
 		}
 		while (wait(NULL) > 0)

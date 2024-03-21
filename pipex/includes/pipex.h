@@ -6,7 +6,7 @@
 /*   By: mkane <mkane@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/14 19:41:22 by kane              #+#    #+#             */
-/*   Updated: 2024/03/20 16:09:32 by mkane            ###   ########.fr       */
+/*   Updated: 2024/03/21 13:54:46 by mkane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,10 +33,10 @@ typedef struct s_pipex
 	int		start;
 }	t_pipex;
 
-void	ft_pipex(t_pipex *pipex, char *argv, char **envp);
+void	ft_pipex(t_pipex *pipex, char *argv, char **envp, char *path);
 char	*ft_path(char *cmd, char **envp);
-void	ft_error(t_pipex *pipex, int error);
+void	ft_error(t_pipex *pipex, int error, char *str);
 void	ft_free(char **str);
-void	here_doc(char *delimiter, t_pipex *pipex, char *argv);
+void	here_doc(char *delimiter, char *argv);
 
 #endif

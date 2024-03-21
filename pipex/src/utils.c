@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kane <kane@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: mkane <mkane@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/15 11:06:15 by mkane             #+#    #+#             */
-/*   Updated: 2024/03/20 22:02:43 by kane             ###   ########.fr       */
+/*   Updated: 2024/03/21 14:00:06 by mkane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/pipex.h"
 
-void	ft_error(t_pipex *pipex, int error)
+void	ft_error(t_pipex *pipex, int error, char *str)
 {
 	if (pipex->here_doc)
 		unlink("here_doc");
@@ -24,10 +24,7 @@ void	ft_error(t_pipex *pipex, int error)
 		close(pipex->fd[0]);
 	if (pipex->fd[1] != -1)
 		close(pipex->fd[1]);
-	if (error == 1)
-		perror("pipex");
-	if (error == 127)
-		ft_putstr_fd("pipex: command not found\n", 2);
+	write(2, str, ft_strlen(str));
 	exit(error);
 }
 

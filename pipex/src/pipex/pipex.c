@@ -6,7 +6,7 @@
 /*   By: mkane <mkane@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/15 07:00:03 by mkane             #+#    #+#             */
-/*   Updated: 2024/03/20 13:15:16 by mkane            ###   ########.fr       */
+/*   Updated: 2024/03/21 13:40:46 by mkane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ int	main(int argc, char **argv, char **envp)
 		ft_init(&pipex, argv, argc);
 		while (pipex.loop_index < pipex.len_cmd)
 		{
-			ft_pipex(&pipex, argv[pipex.loop_index + 2], envp);
+			ft_pipex(&pipex, argv[pipex.loop_index + 2], envp, argv[1]);
 			pipex.loop_index++;
 		}
 		while (wait(NULL) > 0)

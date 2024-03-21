@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   heredoc.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kane <kane@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: mkane <mkane@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/20 15:52:36 by mkane             #+#    #+#             */
-/*   Updated: 2024/03/20 21:48:02 by kane             ###   ########.fr       */
+/*   Updated: 2024/03/21 13:55:29 by mkane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/pipex.h"
 
-static int	ft_open(t_pipex *pipex, char *delimiter)
+static int	ft_open(char *delimiter)
 {
 	int	fd;
 
@@ -20,7 +20,7 @@ static int	ft_open(t_pipex *pipex, char *delimiter)
 	if (fd == -1)
 	{
 		free(delimiter);
-		ft_error(pipex, 1);
+		exit(1);
 	}
 	ft_putstr_fd("> ", 1);
 	return (fd);
@@ -52,12 +52,12 @@ static	void	ft_close(char *delimiter, int fd, char **line)
 	close(fd);
 }
 
-void	here_doc(char *delimiter, t_pipex *pipex, char *argv)
+void	here_doc(char *delimiter, char *argv)
 {
 	char	*line;
 
 	char *(lim_on_hold) = NULL;
-	int (fd) = ft_open(pipex, delimiter);
+	int (fd) = ft_open(delimiter);
 	while (1)
 	{
 		line = get_next_line(0);
